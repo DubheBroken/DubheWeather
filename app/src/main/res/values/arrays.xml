@@ -10,4 +10,20 @@
 		<item>@string/unit_i</item>
 		<item>@string/unit_m</item>
 	</string-array>
+	
+	<string-array name="lang">
+		<item>@string/cn</item>
+		<item>@string/hk</item>
+		<item>@string/en</item>
+		<item>@string/de</item>
+		<item>@string/es</item>
+		<item>@string/fr</item>
+		<item>@string/it</item>
+		<item>@string/jp</item>
+		<item>@string/kr</item>
+		<item>@string/ru</item>
+		<item>@string/in</item>
+		<item>@string/th</item>
+	</string-array>
+	
 </resources>

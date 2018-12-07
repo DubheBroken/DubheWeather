@@ -118,6 +118,13 @@ public class WeatherActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_left, R.anim.animo_no);
         });
 
+        btnSetting.setOnClickListener(v -> {
+            startActivity(new Intent(context, SettingActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.animo_no);
+        });
+
+
+
         if (getIntent() != null) {
             Intent intent = getIntent();
             HotCity.HeWeather6Bean.BasicBean basicBean = (HotCity.HeWeather6Bean.BasicBean)

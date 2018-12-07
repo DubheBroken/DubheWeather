@@ -50,7 +50,7 @@
 		android:id="@+id/constraint_setting_group"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"
+		android:layout_marginTop="16dp"
 		android:background="@color/white"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.0"
@@ -100,7 +100,7 @@
 			android:layout_marginTop="8dp"
 			android:layout_marginEnd="16dp"
 			android:layout_marginBottom="8dp"
-			android:background="@drawable/arrow_down"
+			android:background="@drawable/arrow_right"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
@@ -173,7 +173,7 @@
 			android:layout_marginTop="8dp"
 			android:layout_marginEnd="16dp"
 			android:layout_marginBottom="8dp"
-			android:background="@drawable/arrow_down"
+			android:background="@drawable/arrow_right"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
@@ -246,7 +246,7 @@
 			android:layout_marginTop="8dp"
 			android:layout_marginEnd="16dp"
 			android:layout_marginBottom="8dp"
-			android:background="@drawable/arrow_down"
+			android:background="@drawable/arrow_right"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />

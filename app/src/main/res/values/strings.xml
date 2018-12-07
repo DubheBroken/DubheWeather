@@ -14,5 +14,19 @@
 	<string name="unit_i">英制/华氏度</string>
 	<string name="unit_m">公制/摄氏度</string>
 	<string name="request_restart">语言设定重启APP后生效，现在重启吗？</string>
-
+	<string name="select_lang">选择语言</string>
+	<string name="select_group">选择查询范围</string>
+	<string name="select_unit">选择温度单位</string>
+	<string name="cn">简体中文</string>
+	<string name="hk">繁体中文</string>
+	<string name="en">English</string>
+	<string name="de">Deutsch</string>
+	<string name="es">Español</string>
+	<string name="fr">Le français</string>
+	<string name="it">lingua italiana</string>
+	<string name="jp">日本語</string>
+	<string name="kr">한국어</string>
+	<string name="ru">русский</string>
+	<string name="in">हिन्दी</string>
+	<string name="th">ไทย</string>
 </resources>
