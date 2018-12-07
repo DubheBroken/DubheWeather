@@ -15,12 +15,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.dubhe.broken.dubheweather.adapter.CityListAdapter;
 import com.dubhe.broken.dubheweather.constant.ServiceInfo;
 import com.dubhe.broken.dubheweather.entity.HotCity;
 import com.dubhe.broken.dubheweather.utils.HttpUtils;
 import com.dubhe.broken.dubheweather.utils.ToastUtils;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -89,18 +88,82 @@ public class AddCityActivity extends AppCompatActivity {
                 String input = String.valueOf(s);
                 //监听输入框，已输入就去查询
                 if (input.length() > 1) {
-
+                    getMatchCity(input);
                 }
             }
         });
-
         getHotCitys();
+    }
+
+    private void getMatchCity(String input) {
+        Observable.create((ObservableOnSubscribe<SparseArray>) emitter -> {
+            Map<String, String> map = new HashMap<>();
+            map.put(ServiceInfo.SERACH_CITY.LOCATION,input);
+            HttpUtils.sendOKHttpRequest(ServiceInfo.SERACH_CITY.getURL(map), new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    emitter.onError(e);
+                }
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    SparseArray<String> sparseArray = new SparseArray();
+                    sparseArray.put(0, Integer.toString(response.code()));
+                    sparseArray.put(1, response.body() != null ? response.body().string() : "");
+                    emitter.onNext(sparseArray);
+                }
+            });
+        }).subscribe(new Observer<SparseArray>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(SparseArray s) {
+                switch ((String) s.get(0)) {
+                    case "200":
+                        HotCity hotCity = JSON.parseObject(s.get(1).toString(), HotCity.class);
+                        if (hotCity != null) {
+                            List<HotCity.HeWeather6Bean> list_heWeather6Bean = hotCity.getHeWeather6();
+                            if (list_heWeather6Bean.get(0).getStatus().equals(ServiceInfo.Status.OK)) {
+                                list_hotcitys = list_heWeather6Bean.get(0).getBasic();
+                                List<String> stringArray = new ArrayList<>();
+                                for (HotCity.HeWeather6Bean.BasicBean hotcity : list_hotcitys) {
+                                    stringArray.add(hotcity.getLocation());
+                                }
+                                runOnUiThread(() -> {
+                                    ArrayAdapter<String> adapter= new ArrayAdapter<>(context, R.layout.city_item_layout, stringArray);
+                                    actvAddcity.setAdapter(adapter);
+                                    actvAddcity.showDropDown();
+                                });
+                            } else {
+                                Log.e(TAG, ServiceInfo.Status.getMessage(list_heWeather6Bean.get(0).getStatus()));
+                            }
+                        }
+                        break;
+                    default:
+                        ToastUtils.show(context, "连接服务器失败");
+                        break;
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                ToastUtils.show(context, "连接服务器失败");
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
     }
 
     private void getHotCitys() {
         Observable.create((ObservableOnSubscribe<SparseArray>) emitter -> {
             Map<String, String> map = new HashMap<>();
-            HttpUtils.sendOKHttpRequest(ServiceInfo.HOT_CITY.getHotCityUri(map), new Callback() {
+            HttpUtils.sendOKHttpRequest(ServiceInfo.HOT_CITY.getUri(map), new Callback() {
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
                     emitter.onError(e);

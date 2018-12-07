@@ -2,4 +2,5 @@
 <resources>
 	<dimen name="toolbar_high">56dp</dimen>
 	<dimen name="title_size">18sp</dimen>
+	<dimen name="tag_size">14sp</dimen>
 </resources>
