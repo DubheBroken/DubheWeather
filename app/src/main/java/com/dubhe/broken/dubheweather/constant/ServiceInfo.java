@@ -1,9 +1,8 @@
 package com.dubhe.broken.dubheweather.constant;
 
-import java.lang.reflect.Field;
 import java.util.Map;
 
-import static com.dubhe.broken.dubheweather.constant.ServiceInfo.HOT_CITY.NUMBER_D;
+import static com.dubhe.broken.dubheweather.constant.ServiceInfo.HotCity.NUMBER_D;
 
 /**
  * 作者：DubheBroken
@@ -76,7 +75,7 @@ public class ServiceInfo {
         }
     }
 
-    public static class HOT_CITY {
+    public static class HotCity {
 
         //URL
         private static final String HOT_CITY_URL = "https://search.heweather.com/top?";
@@ -122,7 +121,7 @@ public class ServiceInfo {
 
     }
 
-    public static class SERACH_CITY {
+    public static class SearchCity {
         //URL
         public static final String URL = "https://search.heweather.com/find?";
 
@@ -186,6 +185,46 @@ public class ServiceInfo {
                 str += "&" + LANG_D;
             }
 
+            return str;
+        }
+
+    }
+
+    public static class NowWeather {
+        //请求地址
+        public static final String URL = "https://free-api.heweather.com/s6/weather/now?";
+
+        //位置
+        //1.城市ID
+        //2.经度,纬度
+        //3.城市名称拼音or汉字
+        //4.城市名称,上级城市      消歧义
+        //5.IP地址
+        //6.根据请求来源自动判断     默认
+        public static final String LOCATION = "location";
+        public static final String LOCATION_D = LOCATION + "=auto_ip";//自动判断
+
+        //单位 可选 公制（m）或英制（i） 默认为公制
+        public static final String UNIT="unit";
+
+        public static String getUrl(Map map){
+            String str = URL + KEY_D;
+
+            if (map.get(LOCATION) != null && map.get(LOCATION).toString().length() > 0) {
+                str += "&" + LOCATION + "=" + map.get(LOCATION).toString();
+            } else {
+                str += "&" + LOCATION_D;
+            }
+
+            if (map.get(UNIT) != null && map.get(UNIT).toString().length() > 0) {
+                str += "&" + UNIT + "=" + map.get(UNIT).toString();
+            }
+
+            if (map.get(LANG) != null && map.get(LANG).toString().length() > 0) {
+                str += "&" + LANG + "=" + map.get(LANG).toString();
+            } else {
+                str += "&" + LANG_D;
+            }
             return str;
         }
 

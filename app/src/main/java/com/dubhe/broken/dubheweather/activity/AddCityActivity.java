@@ -1,6 +1,7 @@
-package com.dubhe.broken.dubheweather;
+package com.dubhe.broken.dubheweather.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,15 +10,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.dubhe.broken.dubheweather.adapter.CityListAdapter;
+import com.dubhe.broken.dubheweather.R;
 import com.dubhe.broken.dubheweather.constant.ServiceInfo;
-import com.dubhe.broken.dubheweather.entity.HotCity;
 import com.dubhe.broken.dubheweather.utils.HttpUtils;
 import com.dubhe.broken.dubheweather.utils.ToastUtils;
 
@@ -49,7 +51,6 @@ public class AddCityActivity extends AppCompatActivity {
     private TextView textAddcity;
     private AutoCompleteTextView actvAddcity;
     private ListView listViewHotCitys;
-    private List<HotCity.HeWeather6Bean.BasicBean> list_hotcitys;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,8 +99,8 @@ public class AddCityActivity extends AppCompatActivity {
     private void getMatchCity(String input) {
         Observable.create((ObservableOnSubscribe<SparseArray>) emitter -> {
             Map<String, String> map = new HashMap<>();
-            map.put(ServiceInfo.SERACH_CITY.LOCATION,input);
-            HttpUtils.sendOKHttpRequest(ServiceInfo.SERACH_CITY.getURL(map), new Callback() {
+            map.put(ServiceInfo.SearchCity.LOCATION, input);
+            HttpUtils.sendOKHttpRequest(ServiceInfo.SearchCity.getURL(map), new Callback() {
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
                     emitter.onError(e);
@@ -123,19 +124,25 @@ public class AddCityActivity extends AppCompatActivity {
             public void onNext(SparseArray s) {
                 switch ((String) s.get(0)) {
                     case "200":
-                        HotCity hotCity = JSON.parseObject(s.get(1).toString(), HotCity.class);
+                        com.dubhe.broken.dubheweather.entity.HotCity hotCity = JSON.parseObject(s.get(1).toString(), com.dubhe.broken.dubheweather.entity.HotCity.class);
                         if (hotCity != null) {
-                            List<HotCity.HeWeather6Bean> list_heWeather6Bean = hotCity.getHeWeather6();
+                            List<com.dubhe.broken.dubheweather.entity.HotCity.HeWeather6Bean> list_heWeather6Bean = hotCity.getHeWeather6();
                             if (list_heWeather6Bean.get(0).getStatus().equals(ServiceInfo.Status.OK)) {
-                                list_hotcitys = list_heWeather6Bean.get(0).getBasic();
+                                List<com.dubhe.broken.dubheweather.entity.HotCity.HeWeather6Bean.BasicBean> list_hotcitys = list_heWeather6Bean.get(0).getBasic();
                                 List<String> stringArray = new ArrayList<>();
-                                for (HotCity.HeWeather6Bean.BasicBean hotcity : list_hotcitys) {
+                                for (com.dubhe.broken.dubheweather.entity.HotCity.HeWeather6Bean.BasicBean hotcity : list_hotcitys) {
                                     stringArray.add(hotcity.getLocation());
                                 }
                                 runOnUiThread(() -> {
-                                    ArrayAdapter<String> adapter= new ArrayAdapter<>(context, R.layout.city_item_layout, stringArray);
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.city_item_layout, stringArray);
                                     actvAddcity.setAdapter(adapter);
                                     actvAddcity.showDropDown();
+                                    actvAddcity.setOnItemClickListener((parent, view, position, id) -> {
+                                        startActivity(new Intent(context, WeatherActivity.class)//跳转到天气详情页
+                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK)
+                                                .putExtra("city", list_hotcitys.get(position)));//把城市信息传到intent中
+                                                overridePendingTransition(R.anim.slide_in_right,R.anim.animo_no);
+                                    });
                                 });
                             } else {
                                 Log.e(TAG, ServiceInfo.Status.getMessage(list_heWeather6Bean.get(0).getStatus()));
@@ -163,7 +170,7 @@ public class AddCityActivity extends AppCompatActivity {
     private void getHotCitys() {
         Observable.create((ObservableOnSubscribe<SparseArray>) emitter -> {
             Map<String, String> map = new HashMap<>();
-            HttpUtils.sendOKHttpRequest(ServiceInfo.HOT_CITY.getUri(map), new Callback() {
+            HttpUtils.sendOKHttpRequest(ServiceInfo.HotCity.getUri(map), new Callback() {
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
                     emitter.onError(e);
@@ -187,18 +194,24 @@ public class AddCityActivity extends AppCompatActivity {
             public void onNext(SparseArray s) {
                 switch ((String) s.get(0)) {
                     case "200":
-                        HotCity hotCity = JSON.parseObject(s.get(1).toString(), HotCity.class);
+                        com.dubhe.broken.dubheweather.entity.HotCity hotCity = JSON.parseObject(s.get(1).toString(), com.dubhe.broken.dubheweather.entity.HotCity.class);
                         if (hotCity != null) {
-                            List<HotCity.HeWeather6Bean> list_heWeather6Bean = hotCity.getHeWeather6();
+                            List<com.dubhe.broken.dubheweather.entity.HotCity.HeWeather6Bean> list_heWeather6Bean = hotCity.getHeWeather6();
                             if (list_heWeather6Bean.get(0).getStatus().equals(ServiceInfo.Status.OK)) {
-                                list_hotcitys = list_heWeather6Bean.get(0).getBasic();
+                                List<com.dubhe.broken.dubheweather.entity.HotCity.HeWeather6Bean.BasicBean> list_hotcitys = list_heWeather6Bean.get(0).getBasic();
                                 List<String> stringArray = new ArrayList<>();
-                                for (HotCity.HeWeather6Bean.BasicBean hotcity : list_hotcitys) {
+                                for (com.dubhe.broken.dubheweather.entity.HotCity.HeWeather6Bean.BasicBean hotcity : list_hotcitys) {
                                     stringArray.add(hotcity.getLocation());
                                 }
                                 runOnUiThread(() -> {
                                     ArrayAdapter<String> hotCitysAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, stringArray);
                                     listViewHotCitys.setAdapter(hotCitysAdapter);
+                                    listViewHotCitys.setOnItemClickListener((parent, view, position, id) -> {
+                                        startActivity(new Intent(context, WeatherActivity.class)//跳转到天气详情页
+                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK)
+                                                .putExtra("city", list_hotcitys.get(position)));//把城市信息传到intent中
+                                        overridePendingTransition(R.anim.slide_in_right,R.anim.animo_no);
+                                    });
                                 });
                             } else {
                                 Log.e(TAG, ServiceInfo.Status.getMessage(list_heWeather6Bean.get(0).getStatus()));

@@ -8,6 +8,7 @@
 	android:orientation="vertical"
 	>
 	
+	<!--Toolbar-->
 	<android.support.constraint.ConstraintLayout
 		android:id="@+id/constraint_addcity_toolbar"
 		android:layout_width="match_parent"

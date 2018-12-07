@@ -46,7 +46,7 @@ public class HotCity implements Serializable {
             this.basic = basic;
         }
 
-        public static class BasicBean {
+        public static class BasicBean implements Serializable {
             /**
              * cid : CN101010100
              * location : 北京

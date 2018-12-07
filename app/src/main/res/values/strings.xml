@@ -1,3 +1,7 @@
 <resources>
 	<string name="app_name">DubheWeather</string>
+	<string name="fl">体感温度</string>
+	<string name="hum">相对湿度</string>
+	<string name="pcpn">降水量</string>
+	<string name="vis">能见度</string>
 </resources>

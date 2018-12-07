@@ -3,4 +3,7 @@
 	<dimen name="toolbar_high">56dp</dimen>
 	<dimen name="title_size">18sp</dimen>
 	<dimen name="tag_size">14sp</dimen>
+	<dimen name="tmp_size">72sp</dimen>
+	<dimen name="condtxt_size">20sp</dimen>
+	<dimen name="line_width">1dp</dimen>
 </resources>
