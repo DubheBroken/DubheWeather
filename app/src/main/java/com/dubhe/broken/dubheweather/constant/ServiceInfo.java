@@ -12,6 +12,9 @@ import static com.dubhe.broken.dubheweather.constant.ServiceInfo.HotCity.NUMBER_
  */
 public class ServiceInfo {
 
+    //图片资源前缀
+    public static final String IMG_TAG="weatherimg_";
+
     //以下是支持的参数，D表示默认值
     //key 必传 直接用KEY_D就好
     public static final String key = "fa0a979cb34b4482b2dfeac2b00d2a0a";

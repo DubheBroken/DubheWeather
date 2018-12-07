@@ -7,4 +7,18 @@
 	<color name="gray">#b6b6b6</color>
 	<color name="gray_line">#b3b3b3</color>
 	<color name="gray_tag">#999999</color>
+	<color name="gray_back">#f2f2f2</color>
+	<color name="red">#ff3300</color>
+	<color name="blue_success">#0075e0</color>
+	<color name="blue">#41bbee</color>
+	<color name="colorloginText">#37b4f5</color>
+	<color name="line_b6">#b6b6b6</color>
+	<color name="line_e6">#e6e6e6</color>
+	<color name="text_gray6">#666666</color>
+	<color name="text_gray9">#999999</color>
+	<color name="text_grayc">#cccccc</color>
+	<color name="text_black">#333333</color>
+	<color name="line_e5">#e5e5e5</color>
+	<color name="radio_black">#282828</color>
+	<color name="radio_gray">#9b9b9b</color>
 </resources>

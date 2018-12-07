@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="group">
+		<item>@string/zh</item>
+		<item>@string/over </item>
+		<item>@string/world</item>
+	</string-array>
+
+	<string-array name="unit">
+		<item>@string/unit_i</item>
+		<item>@string/unit_m</item>
+	</string-array>
+</resources>

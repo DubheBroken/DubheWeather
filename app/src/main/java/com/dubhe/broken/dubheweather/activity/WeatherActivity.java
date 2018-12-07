@@ -17,7 +17,9 @@ import com.dubhe.broken.dubheweather.R;
 import com.dubhe.broken.dubheweather.constant.ServiceInfo;
 import com.dubhe.broken.dubheweather.entity.HotCity;
 import com.dubhe.broken.dubheweather.entity.Weather;
+import com.dubhe.broken.dubheweather.utils.DrawableTintUtil;
 import com.dubhe.broken.dubheweather.utils.HttpUtils;
+import com.dubhe.broken.dubheweather.utils.ResHelper;
 import com.dubhe.broken.dubheweather.utils.ToastUtils;
 
 import java.io.IOException;
@@ -68,11 +70,14 @@ public class WeatherActivity extends AppCompatActivity {
     private ConstraintLayout constraintWeather;
     private String TAG = "con.dubhe.broken.dubheweather.activity.WeatherActivity";
     private String cid;
+    private TextView textTitleimg;
+    private TextView textCondimg;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_layout);
+        initView();
     }
 
     @Override
@@ -105,6 +110,8 @@ public class WeatherActivity extends AppCompatActivity {
         constraintMoreinfoWeather = findViewById(R.id.constraint_moreinfo_weather);
         constraintTmpWeather = findViewById(R.id.constraint_tmp_weather);
         constraintWeather = findViewById(R.id.constraint_weather);
+        textTitleimg = findViewById(R.id.text_titleimg);
+        textCondimg = findViewById(R.id.text_condimg);
 
         btnChoosecity.setOnClickListener(v -> {
             startActivity(new Intent(context, AddCityActivity.class));
@@ -120,6 +127,7 @@ public class WeatherActivity extends AppCompatActivity {
             }
         }
         getWeatherInfo();
+
     }
 
     private void getWeatherInfo() {
@@ -152,7 +160,7 @@ public class WeatherActivity extends AppCompatActivity {
             public void onNext(SparseArray s) {
                 switch ((String) s.get(0)) {
                     case "200":
-                        com.dubhe.broken.dubheweather.entity.Weather weather = JSON.parseObject(s.get(1).toString(), com.dubhe.broken.dubheweather.entity.Weather.class);
+                        Weather weather = JSON.parseObject(s.get(1).toString(), Weather.class);
                         if (weather != null) {
                             List<Weather.HeWeather6Bean> list_heWeather6Bean = weather.getHeWeather6();
                             if (list_heWeather6Bean.get(0).getStatus().equals(ServiceInfo.Status.OK)) {
@@ -167,8 +175,19 @@ public class WeatherActivity extends AppCompatActivity {
                                     textHum.setText(nowBean.getHum());
                                     textPcpn.setText(nowBean.getPcpn());
                                     textVis.setText(nowBean.getVis());
-                                });
 
+                                    textTitleimg.setBackground(
+                                            DrawableTintUtil.tintDrawable(
+                                                    getResources().getDrawable(
+                                                            ResHelper.getResId(ServiceInfo.IMG_TAG + nowBean.getCond_code(), R.drawable.class))
+                                                    , getResources().getColor(R.color.white)));
+
+                                    textCondimg.setBackground(
+                                            DrawableTintUtil.tintDrawable(
+                                                    getResources().getDrawable(
+                                                            ResHelper.getResId(ServiceInfo.IMG_TAG + nowBean.getCond_code(), R.drawable.class))
+                                                    , getResources().getColor(R.color.white)));
+                                });
                             } else {
                                 Log.e(TAG, ServiceInfo.Status.getMessage(list_heWeather6Bean.get(0).getStatus()));
                             }
