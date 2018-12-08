@@ -1,16 +1,23 @@
 package com.dubhe.broken.dubheweather.activity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dubhe.broken.dubheweather.R;
+import com.dubhe.broken.dubheweather.application.AppData;
 
 /**
  * 作者：DubheBroken
@@ -46,6 +53,7 @@ public class SettingActivity extends AppCompatActivity {
     private ConstraintLayout constraintSettingUnit;
     private ConstraintLayout constraintSetting;
     private AlertDialog dialog;
+    private AlertDialog dialogOk;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +90,10 @@ public class SettingActivity extends AppCompatActivity {
         constraintSettingUnit = findViewById(R.id.constraint_setting_unit);
         constraintSetting = findViewById(R.id.constraint_setting);
 
+        textSettingGroup.setText(AppData.getSettingStr(context, AppData.getGroup()));
+        textSettingLang.setText(AppData.getSettingStr(context, AppData.getLang()));
+        textSettingUnit.setText(AppData.getSettingStr(context, AppData.getUnit()));
+
         btnBackSetting.setOnClickListener(v -> finish());
         constraintSettingGroup.setOnClickListener(v -> showSelectDialog(MODE_GROUP));
         constraintSettingUnit.setOnClickListener(v -> showSelectDialog(MODE_UNIT));
@@ -95,29 +107,86 @@ public class SettingActivity extends AppCompatActivity {
     private void showSelectDialog(int mode) {
         String[] items = null;//数据源
         String title = null;
+        TypedArray ar=null;
         switch (mode) {
             case MODE_GROUP:
+                ar = context.getResources().obtainTypedArray(R.array.group);
                 items = getResources().getStringArray(R.array.group);
                 title = getResources().getString(R.string.select_group);
                 break;
             case MODE_LANG:
+                ar = context.getResources().obtainTypedArray(R.array.lang);
                 items = getResources().getStringArray(R.array.lang);
                 title = getResources().getString(R.string.select_lang);
                 break;
             case MODE_UNIT:
+                ar = context.getResources().obtainTypedArray(R.array.unit);
                 items = getResources().getStringArray(R.array.unit);
                 title = getResources().getString(R.string.select_unit);
                 break;
         }
         String[] finalItems = items;
+        TypedArray finalAr = ar;
         dialog = new AlertDialog.Builder(this)
                 .setTitle(title)//标题
                 .setItems(items, (dialog1, which) -> {
-                            Toast.makeText(context, finalItems[which], Toast.LENGTH_SHORT).show();
+                            switch (mode) {
+                                case MODE_GROUP:
+                                    textSettingGroup.setText(finalItems[which]);
+                                    AppData.setGroup(AppData.getSettingCode(context, finalAr.getResourceId(which,-1)));
+                                    break;
+                                case MODE_LANG:
+                                    textSettingLang.setText(finalItems[which]);
+                                    AppData.setLang(AppData.getSettingCode(context, finalAr.getResourceId(which,-1)));
+                                    showOkCancelDialog();
+                                    break;
+                                case MODE_UNIT:
+                                    textSettingUnit.setText(finalItems[which]);
+                                    AppData.setUnit(AppData.getSettingCode(context, finalAr.getResourceId(which,-1)));
+                                    break;
+                            }
                             dialog.cancel();
                         }
                 )
                 .create();
         dialog.show();
+    }
+
+    private void showOkCancelDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        dialogOk = builder.create();
+        View dialogView = View.inflate(getApplicationContext(), R.layout.dialog_okcancel_layout, null);
+        Button button_ok = dialogView.findViewById(R.id.button_ok_dialog);
+        button_ok.setOnClickListener(v -> {
+            dialogOk.cancel();
+            AppData.saveData();
+//            finish();
+            restartApplication();
+        });
+        Button button_cancel = dialogView.findViewById(R.id.button_cancel_dialog);
+        button_cancel.setOnClickListener(v -> dialogOk.cancel());
+        dialogOk.setView(dialogView);
+        Window window = dialogOk.getWindow();
+        dialogOk.show();
+        WindowManager.LayoutParams lp = window.getAttributes();
+//        window.setGravity(Gravity.CENTER);
+//        lp.height = getResources().getDimensionPixelSize(R.dimen.dialog_height);
+        lp.width = getResources().getDimensionPixelSize(R.dimen.dialog_width);
+        window.setAttributes(lp);
+        window.setBackgroundDrawable(new ColorDrawable(0));
+        dialogOk.setCanceledOnTouchOutside(false);
+    }
+
+    private void restartApplication() {
+        final Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        AppData.saveData();
+        super.onDestroy();
     }
 }

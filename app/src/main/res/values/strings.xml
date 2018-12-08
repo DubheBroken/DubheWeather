@@ -1,22 +1,22 @@
 <resources>
-	<string name="app_name">天枢天气</string>
-	<string name="fl">体感温度</string>
-	<string name="hum">相对湿度</string>
-	<string name="pcpn">降水量</string>
-	<string name="vis">能见度</string>
-	<string name="group">查询范围</string>
-	<string name="zh">中国</string>
-	<string name="over">海外</string>
-	<string name="world">世界</string>
-	<string name="lang">语言</string>
-	<string name="setting">设置</string>
-	<string name="unit">温度单位</string>
-	<string name="unit_i">英制/华氏度</string>
-	<string name="unit_m">公制/摄氏度</string>
-	<string name="request_restart">语言设定重启APP后生效，现在重启吗？</string>
-	<string name="select_lang">选择语言</string>
-	<string name="select_group">选择查询范围</string>
-	<string name="select_unit">选择温度单位</string>
+	<string name="app_name">Tianshu weather</string>
+	<string name="fl">somatosensory temperature</string>
+	<string name="hum">relative humidity</string>
+	<string name="pcpn">precipitation </string>
+	<string name="vis"> visibility </string>
+	<string name="group">Query scope </string>
+	<string name="zh">China </string>
+	<string name="overseas">Overseas</string>
+	<string name="world">world</string>
+	<string name="lang">language</string>
+	<string name="setting">Settings </string>
+	<string name="unit">temperature unit </string>
+	<string name="i">Inch / Fahrenheit </string>
+	<string name="m">Metric / Celsius </string>
+	<string name="request_restart"> language setting to take effect after restarting the APP, now restart? </string>
+	<string name="select_lang">Select language </string>
+	<string name="select_group">Select the scope of the query</string>
+	<string name="select_unit">Select temperature unit </string>
 	<string name="cn">简体中文</string>
 	<string name="hk">繁体中文</string>
 	<string name="en">English</string>
@@ -29,4 +29,6 @@
 	<string name="ru">русский</string>
 	<string name="in">हिन्दी</string>
 	<string name="th">ไทย</string>
+	<string name="search_hint">输入汉字或拼音搜索</string>
+	<string name="hot_city">热门城市</string>
 </resources>

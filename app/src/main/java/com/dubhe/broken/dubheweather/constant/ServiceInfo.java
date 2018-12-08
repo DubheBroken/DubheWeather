@@ -1,7 +1,10 @@
 package com.dubhe.broken.dubheweather.constant;
 
+import com.dubhe.broken.dubheweather.application.AppData;
+
 import java.util.Map;
 
+import static com.dubhe.broken.dubheweather.constant.ServiceInfo.HotCity.GROUP_D;
 import static com.dubhe.broken.dubheweather.constant.ServiceInfo.HotCity.NUMBER_D;
 
 /**
@@ -13,7 +16,7 @@ import static com.dubhe.broken.dubheweather.constant.ServiceInfo.HotCity.NUMBER_
 public class ServiceInfo {
 
     //图片资源前缀
-    public static final String IMG_TAG="weatherimg_";
+    public static final String IMG_TAG = "weatherimg_";
 
     //以下是支持的参数，D表示默认值
     //key 必传 直接用KEY_D就好
@@ -23,7 +26,7 @@ public class ServiceInfo {
 
     //语言 可选 默认ZH-CN
     public static final String LANG = "lang";
-    public static final String LANG_D = LANG + "=" + "zh-cn";
+    public static final String LANG_D = AppData.getLang();
 
     public static class Status {
         public static final String OK = "ok";
@@ -88,9 +91,9 @@ public class ServiceInfo {
         public static final String GROUP_CN = "cn";
         public static final String GROUP_OVER = "overseas";
         public static final String GROUP_ALL = "world";
-        public static final String GROUP_D = GROUP + "=" + GROUP_CN;
+        public static final String GROUP_D = AppData.getGroup();
 
-        //数量 可选 默认10
+        //数量 可选 1-20 默认10
         public static final String NUMBER = "number";
         public static final String NUMBER_D = NUMBER + "=" + "20";
 
@@ -167,7 +170,7 @@ public class ServiceInfo {
             if (map.get(GROUP) != null && map.get(GROUP).toString().length() > 0) {
                 str += "&" + GROUP + "=" + map.get(GROUP).toString();
             } else {
-                str += "&" + GROUP_ZH;
+                str += "&" + GROUP_D;
             }
 
             if (map.get(MODE) != null && map.get(MODE).toString().length() > 0) {
@@ -208,9 +211,9 @@ public class ServiceInfo {
         public static final String LOCATION_D = LOCATION + "=auto_ip";//自动判断
 
         //单位 可选 公制（m）或英制（i） 默认为公制
-        public static final String UNIT="unit";
+        public static final String UNIT = "unit";
 
-        public static String getUrl(Map map){
+        public static String getUrl(Map map) {
             String str = URL + KEY_D;
 
             if (map.get(LOCATION) != null && map.get(LOCATION).toString().length() > 0) {

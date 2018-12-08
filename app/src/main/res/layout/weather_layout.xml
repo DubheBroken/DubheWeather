@@ -27,6 +27,18 @@
 			app:layout_constraintTop_toTopOf="parent" />
 		
 		<TextView
+			android:id="@+id/text_citytmp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:text="当前温度"
+			android:textColor="@color/white"
+			android:textSize="@dimen/title_size"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/text_cityname"
+			app:layout_constraintTop_toTopOf="parent" />
+		
+		<TextView
 			android:id="@+id/text_cityname"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

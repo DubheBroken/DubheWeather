@@ -233,7 +233,7 @@
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginEnd="16dp"
-			android:text="@string/unit_m"
+			android:text="@string/m"
 			android:textSize="@dimen/tag_size"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toStartOf="@+id/text_setting_unit_arrow"

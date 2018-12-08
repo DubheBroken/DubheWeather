@@ -2,13 +2,13 @@
 <resources>
 	<string-array name="group">
 		<item>@string/zh</item>
-		<item>@string/over </item>
+		<item>@string/overseas</item>
 		<item>@string/world</item>
 	</string-array>
 
 	<string-array name="unit">
-		<item>@string/unit_i</item>
-		<item>@string/unit_m</item>
+		<item>@string/i</item>
+		<item>@string/m</item>
 	</string-array>
 	
 	<string-array name="lang">

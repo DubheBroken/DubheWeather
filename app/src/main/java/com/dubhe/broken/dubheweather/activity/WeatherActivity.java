@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.dubhe.broken.dubheweather.R;
+import com.dubhe.broken.dubheweather.application.AppData;
 import com.dubhe.broken.dubheweather.constant.ServiceInfo;
 import com.dubhe.broken.dubheweather.entity.HotCity;
 import com.dubhe.broken.dubheweather.entity.Weather;
@@ -72,12 +73,12 @@ public class WeatherActivity extends AppCompatActivity {
     private String cid;
     private TextView textTitleimg;
     private TextView textCondimg;
+    private TextView textCitytmp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_layout);
-        initView();
     }
 
     @Override
@@ -112,6 +113,7 @@ public class WeatherActivity extends AppCompatActivity {
         constraintWeather = findViewById(R.id.constraint_weather);
         textTitleimg = findViewById(R.id.text_titleimg);
         textCondimg = findViewById(R.id.text_condimg);
+        textCitytmp = findViewById(R.id.text_citytmp);
 
         btnChoosecity.setOnClickListener(v -> {
             startActivity(new Intent(context, AddCityActivity.class));
@@ -122,7 +124,6 @@ public class WeatherActivity extends AppCompatActivity {
             startActivity(new Intent(context, SettingActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.animo_no);
         });
-
 
 
         if (getIntent() != null) {
@@ -174,14 +175,15 @@ public class WeatherActivity extends AppCompatActivity {
                                 Weather.HeWeather6Bean.NowBean nowBean = list_heWeather6Bean.get(0).getNow();
                                 runOnUiThread(() -> {
                                     textCityname.setText(list_heWeather6Bean.get(0).getBasic().getLocation());
-                                    textTmpWeather.setText(nowBean.getTmp());
+                                    textTmpWeather.setText(nowBean.getTmp() + AppData.getUnitStr().get(AppData.TMP_UNIT));//当前气温
+                                    textCitytmp.setText(nowBean.getTmp() + AppData.getUnitStr().get(AppData.TMP_UNIT));//当前气温
+                                    textFl.setText(nowBean.getFl() + AppData.getUnitStr().get(AppData.TMP_UNIT));//体感温度
                                     textCondtxtWeather.setText(nowBean.getCond_txt());
                                     textWinddir.setText(nowBean.getWind_dir());
                                     textWindsc.setText(nowBean.getWind_sc());
-                                    textFl.setText(nowBean.getFl());
                                     textHum.setText(nowBean.getHum());
                                     textPcpn.setText(nowBean.getPcpn());
-                                    textVis.setText(nowBean.getVis());
+                                    textVis.setText(nowBean.getVis() + AppData.getUnitStr().get(AppData.VISIBILITY));//能见度
 
                                     textTitleimg.setBackground(
                                             DrawableTintUtil.tintDrawable(

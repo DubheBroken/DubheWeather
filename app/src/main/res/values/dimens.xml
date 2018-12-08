@@ -7,4 +7,6 @@
 	<dimen name="tmp_size">72sp</dimen>
 	<dimen name="condtxt_size">20sp</dimen>
 	<dimen name="line_width">1dp</dimen>
+	<dimen name="dialog_height">240dp</dimen>
+	<dimen name="dialog_width">280dp</dimen>
 </resources>
