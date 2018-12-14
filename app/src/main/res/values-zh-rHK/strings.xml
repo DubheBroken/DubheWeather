@@ -1,0 +1,33 @@
+<resources>
+	<string name="app_name">天樞天氣</string>
+	<string name="fl">體感溫度</string>
+	<string name="hum">相對濕度</string>
+	<string name="pcpn">降水量</string>
+	<string name="vis">能見度</string>
+	<string name="group">查詢範圍</string>
+	<string name="zh">中國</string>
+	<string name="overseas">海外</string>
+	<string name="world">世界</string>
+	<string name="lang">語言</string>
+	<string name="setting">設置</string>
+	<string name="unit">溫度單位</string>
+	<string name="i">英制/華氏度</string>
+	<string name="m">公制/攝氏度</string>
+	<string name="request_restart">語言設定重啟APP後生效，現在重啟嗎？ </string>
+	<string name="select_lang">選擇語言</string>
+	<string name="select_group">選擇查詢範圍</string>
+	<string name="select_unit">選擇溫度單位</string>
+	<string name="search_hint">輸入漢字或拼音搜索</string>
+	<string name="hot_city">熱門城市</string>
+	<string name="cn">简体中文</string>
+	<string name="hk">繁体中文</string>
+	<string name="en">English</string>
+	<string name="de">Deutsch</string>
+	
+	<string name="fr">Le français</string>
+	<string name="it">lingua italiana</string>
+	<string name="jp">日本語</string>
+	<string name="kr">한국어</string>
+	<string name="choose_city">選擇城市</string>
+
+</resources>

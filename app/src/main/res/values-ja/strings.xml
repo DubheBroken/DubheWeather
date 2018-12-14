@@ -1,0 +1,33 @@
+<resources>
+	<string name="app_name">天山天気</string>
+	<string name="fl">体温感知温度</string>
+	<string name="hum">相対湿度</string>
+	<string name="pcpn">降水量</string>
+	<string name="vis">可視性</string>
+	<string name="group">クエリスコープ</string>
+	<string name="zh">中国</string>
+	<string name="overseas">海外</string>
+	<string name="world"> world </string>
+	<string name="lang">言語</string>
+	<string name="setting">設定</string>
+	<string name="unit">温度単位</string>
+	<string name="i">インチ/華氏</string>
+	<string name="m">メトリック/摂氏</string>
+	<string name="request_restart"> APPの再起動後に有効になる言語設定は、今すぐ再起動しますか？ </string>
+	<string name="select_lang">言語の選択</string>
+	<string name="select_group">クエリのスコープを選択します</string>
+	<string name="select_unit">温度単位を選択</string>
+	<string name = "search_hint">漢字またはピンイン検索を入力します。</string>
+	<string name = "hot_city">ホット都市</string>
+	<string name="cn">简体中文</string>
+	<string name="hk">繁体中文</string>
+	<string name="en">English</string>
+	<string name="de">Deutsch</string>
+	
+	<string name="fr">Le français</string>
+	<string name="it">lingua italiana</string>
+	<string name="jp">日本語</string>
+	<string name="kr">한국어</string>
+	<string name="choose_city">都市を選択</string>
+
+</resources>

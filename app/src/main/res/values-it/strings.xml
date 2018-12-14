@@ -1,0 +1,33 @@
+<resources>
+	<string name="app_name"> Tianshu weather </string>
+	<string name="fl"> temperatura somatosensoriale </string>
+	<string name="hum"> umidità relativa </string>
+	<string name="pcpn"> precipitazioni </string>
+	<string name="vis"> visibility </string>
+	<string name="group"> Ambito query </string>
+	<string name="zh"> Cina </string>
+	<string name="overseas"> Overseas </string>
+	<string name="world"> world </string>
+	<string name="lang"> lingua </string>
+	<string name="setting"> Settings </string>
+	<string name="unit"> unità di temperatura </string>
+	<string name="i"> Inch / Fahrenheit </string>
+	<string name="m"> Metric / Celsius </string>
+	<string name="request_restart"> l\'impostazione della lingua ha effetto dopo aver riavviato l\'APP, ora si riavvia? </string>
+	<string name="select_lang"> Seleziona lingua </string>
+	<string name="select_group"> Seleziona l\'ambito della query </string>
+	<string name="select_unit"> Seleziona unità di temperatura </string>
+	<string name="search_hint"> Inserisci caratteri cinesi o ricerca Pinyin </string>
+	<string name="hot_city"> hot city </string>
+	<string name="cn">简体中文</string>
+	<string name="hk">繁体中文</string>
+	<string name="en">English</string>
+	<string name="de">Deutsch</string>
+	
+	<string name="fr">Le français</string>
+	<string name="it">lingua italiana</string>
+	<string name="jp">日本語</string>
+	<string name="kr">한국어</string>
+	<string name="choose_city">Scegli la città</string>
+
+</resources>

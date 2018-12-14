@@ -23,9 +23,11 @@
 	<string name="hk">繁体中文</string>
 	<string name="en">English</string>
 	<string name="de">Deutsch</string>
+	
 	<string name="fr">Le français</string>
 	<string name="it">lingua italiana</string>
 	<string name="jp">日本語</string>
 	<string name="kr">한국어</string>
 	<string name="choose_city">选择城市</string>
+
 </resources>

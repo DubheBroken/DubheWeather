@@ -2,6 +2,7 @@ package com.dubhe.broken.dubheweather.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -99,16 +100,13 @@ public class WeatherActivity extends AppCompatActivity {
         line1 = findViewById(R.id.line1);
         textFlTag = findViewById(R.id.text_fl_tag);
         textFl = findViewById(R.id.text_fl);
-        line2 = findViewById(R.id.line2);
         textHumTag = findViewById(R.id.text_hum_tag);
         textHum = findViewById(R.id.text_hum);
         line3 = findViewById(R.id.line3);
         textPcpnTag = findViewById(R.id.text_pcpn_tag);
         textPcpn = findViewById(R.id.text_pcpn);
-        line4 = findViewById(R.id.line4);
         textVisTag = findViewById(R.id.text_vis_tag);
         textVis = findViewById(R.id.text_vis);
-        constraintMoreinfoWeather = findViewById(R.id.constraint_moreinfo_weather);
         constraintTmpWeather = findViewById(R.id.constraint_tmp_weather);
         constraintWeather = findViewById(R.id.constraint_weather);
         textTitleimg = findViewById(R.id.text_titleimg);
@@ -184,6 +182,103 @@ public class WeatherActivity extends AppCompatActivity {
                                     textHum.setText(nowBean.getHum());
                                     textPcpn.setText(nowBean.getPcpn());
                                     textVis.setText(nowBean.getVis() + AppData.getUnitStr().get(AppData.VISIBILITY));//能见度
+
+                                    String code;
+                                    switch (nowBean.getCond_code()) {
+                                        case "200":
+                                        case "201":
+                                            code = "200";
+                                            break;
+                                        case "202":
+                                        case "203":
+                                        case "204":
+                                            code = "202";
+                                            break;
+                                        case "205":
+                                        case "206":
+                                        case "207":
+                                        case "208":
+                                        case "209":
+                                        case "210":
+                                            code = "205";
+                                            break;
+                                        case "211":
+                                        case "212":
+                                        case "213":
+                                            code = "211";
+                                            break;
+                                        case "300":
+                                        case "305":
+                                        case "309":
+                                        case "314":
+                                            code = "305";
+                                            break;
+                                        case "301":
+                                        case "307":
+                                        case "315":
+                                        case "399":
+                                            code = "307";
+                                            break;
+                                        case "308":
+                                        case "310":
+                                        case "311":
+                                        case "312":
+                                        case "316":
+                                        case "317":
+                                        case "318":
+                                            code = "310";
+                                            break;
+                                        case "400":
+                                        case "404":
+                                        case "406":
+                                        case "407":
+                                        case "408":
+                                            code = "400";
+                                            break;
+                                        case "401":
+                                        case "409":
+                                            code = "401";
+                                            break;
+                                        case "402":
+                                        case "410":
+                                            code = "402";
+                                            break;
+                                        case "405":
+                                        case "499":
+                                            code = "499";
+                                            break;
+                                        case "509":
+                                        case "514":
+                                            code = "509";
+                                            break;
+                                        case "510":
+                                        case "515":
+                                            code = "510";
+                                            break;
+                                        default:
+                                            code = nowBean.getCond_code();
+                                            break;
+                                    }
+                                    switch (code) {
+                                        case "901":
+                                            constraintTmpWeather.setBackgroundColor(
+                                                    getResources().getColor(R.color.blue));
+                                            break;
+                                        case "900":
+                                            constraintTmpWeather.setBackgroundColor(
+                                                    getResources().getColor(R.color.orange));
+                                            break;
+                                        case "999":
+                                            constraintTmpWeather.setBackgroundColor(
+                                                    getResources().getColor(R.color.black));
+                                            break;
+                                        default:
+                                            constraintTmpWeather.setBackground(
+                                                    getResources().getDrawable(
+                                                            ResHelper.getResId(ServiceInfo.BACK_TAG + code, R.drawable.class)));
+                                            break;
+                                    }
+
 
                                     textTitleimg.setBackground(
                                             DrawableTintUtil.tintDrawable(

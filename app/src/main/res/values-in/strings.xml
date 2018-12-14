@@ -1,0 +1,33 @@
+<resources>
+	<string name="app_name"> तियानशु मौसम </string>
+	<string name="fl"> somatosensory तापमान </string>
+	<string name="hum"> सापेक्ष आर्द्रता </string>
+	<string name="pcpn"> वर्षा </string>
+	<string name="vis"> दृश्यता </string>
+	<string name="group"> क्वेरी स्कोप </string>
+	<string name="zh"> चीन </string>
+	<string name="overseas"> विदेशी </string>
+	<string name="world"> world </string>
+	<string name="lang"> भाषा </string>
+	<string name="setting"> सेटिंग्स </string>
+	<string name="unit"> तापमान इकाई </string>
+	<string name="i"> इंच / फ़ारेनहाइट </string>
+	<string name="m"> मीट्रिक / सेल्सियस </string>
+	<string name="request_restart"> एपीपी को पुनरारंभ करने के बाद भाषा सेटिंग प्रभावी होने के लिए, अब पुनरारंभ करें? </string>
+	<string name="select_lang"> भाषा का चयन करें </string>
+	<string name="select_group"> क्वेरी का दायरा चुनें </string>
+	<string name="select_unit"> तापमान इकाई का चयन करें </string>
+	<string name="search_hint"> चीनी वर्ण या पिनयिन खोज दर्ज करें </string>
+	<string name="hot_city"> गर्म शहर </string>
+	<string name="cn">简体中文</string>
+	<string name="hk">繁体中文</string>
+	<string name="en">English</string>
+	<string name="de">Deutsch</string>
+	
+	<string name="fr">Le français</string>
+	<string name="it">lingua italiana</string>
+	<string name="jp">日本語</string>
+	<string name="kr">한국어</string>
+	<string name="choose_city">शहर चुनें</string>
+
+</resources>

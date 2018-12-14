@@ -1,0 +1,33 @@
+<resources>
+	<string name="app_name"> สภาพอากาศของ Tianshu </string>
+	<string name="fl"> อุณหภูมิ somatosensory </string>
+	<string name="hum"> ความชื้นสัมพัทธ์ </string>
+	<string name="pcpn"> precipitation </string>
+	<string name="vis"> การมองเห็น </string>
+	<string name="group"> ขอบเขตของข้อความค้นหา </string>
+	<string name="zh"> จีน </string>
+	<string name="overseas"> ต่างประเทศ </string>
+	<string name="world"> world </string>
+	<string name="lang"> ภาษา </string>
+	<string name="setting"> การตั้งค่า </string>
+	<string name="unit"> หน่วยอุณหภูมิ </string>
+	<string name="i"> นิ้ว / ฟาเรนไฮต์ </string>
+	<string name="m"> เมตริก / เซลเซียส </string>
+	<string name="request_restart"> การตั้งค่าภาษาจะมีผลหลังจากรีสตาร์ท APP แล้วรีสตาร์ทหรือไม่? </string>
+	<string name="select_lang"> เลือกภาษา </string>
+	<string name="select_group"> เลือกขอบเขตของแบบสอบถาม </string>
+	<string name="select_unit"> เลือกหน่วยอุณหภูมิ </string>
+	<string name="search_hint"> ป้อนอักขระภาษาจีนหรือการค้นหาพินอิน </string>
+	<string name="hot_city"> เมืองร้อน </string>
+	<string name="cn">简体中文</string>
+	<string name="hk">繁体中文</string>
+	<string name="en">English</string>
+	<string name="de">Deutsch</string>
+	
+	<string name="fr">Le français</string>
+	<string name="it">lingua italiana</string>
+	<string name="jp">日本語</string>
+	<string name="kr">한국어</string>
+	<string name="choose_city">เลือกเมือง</string>
+
+</resources>

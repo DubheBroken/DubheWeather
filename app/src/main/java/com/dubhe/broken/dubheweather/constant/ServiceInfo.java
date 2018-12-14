@@ -1,5 +1,8 @@
 package com.dubhe.broken.dubheweather.constant;
 
+import android.util.Log;
+
+import com.dubhe.broken.dubheweather.R;
 import com.dubhe.broken.dubheweather.application.AppData;
 
 import java.util.Map;
@@ -17,6 +20,7 @@ public class ServiceInfo {
 
     //图片资源前缀
     public static final String IMG_TAG = "weatherimg_";
+    public static final String BACK_TAG = "weatherback_";
 
     //以下是支持的参数，D表示默认值
     //key 必传 直接用KEY_D就好
@@ -26,7 +30,7 @@ public class ServiceInfo {
 
     //语言 可选 默认ZH-CN
     public static final String LANG = "lang";
-    public static final String LANG_D = AppData.getLang();
+    public static final String UNIT = "unit";
 
     public static class Status {
         public static final String OK = "ok";
@@ -91,7 +95,7 @@ public class ServiceInfo {
         public static final String GROUP_CN = "cn";
         public static final String GROUP_OVER = "overseas";
         public static final String GROUP_ALL = "world";
-        public static final String GROUP_D = AppData.getGroup();
+        public static String GROUP_D = GROUP + "=" + AppData.getGroup();
 
         //数量 可选 1-20 默认10
         public static final String NUMBER = "number";
@@ -106,7 +110,7 @@ public class ServiceInfo {
             if (map.get(GROUP) != null && map.get(GROUP).toString().length() > 0) {
                 str += "&" + GROUP + "=" + map.get(GROUP).toString();
             } else {
-                str += "&" + GROUP_D;
+                str += "&" + GROUP + "=" + GROUP_CN;
             }
 
             if (map.get(NUMBER) != null && map.get(NUMBER).toString().length() > 0) {
@@ -118,9 +122,9 @@ public class ServiceInfo {
             if (map.get(LANG) != null && map.get(LANG).toString().length() > 0) {
                 str += "&" + LANG + "=" + map.get(LANG).toString();
             } else {
-                str += "&" + LANG_D;
+                str += "&" + LANG + "=" + AppData.getLang();
             }
-
+            Log.i("热门城市URL：", str);
             return str;
         }
 
@@ -188,9 +192,9 @@ public class ServiceInfo {
             if (map.get(LANG) != null && map.get(LANG).toString().length() > 0) {
                 str += "&" + LANG + "=" + map.get(LANG).toString();
             } else {
-                str += "&" + LANG_D;
+                str += "&" + LANG + "=" + AppData.getLang();
             }
-
+            Log.i("搜索城市URL：", str);
             return str;
         }
 
@@ -229,11 +233,62 @@ public class ServiceInfo {
             if (map.get(LANG) != null && map.get(LANG).toString().length() > 0) {
                 str += "&" + LANG + "=" + map.get(LANG).toString();
             } else {
-                str += "&" + LANG_D;
+                str += "&" + LANG + "=" + AppData.getLang();
             }
+            Log.i("即时天气URL：", str);
             return str;
         }
 
     }
 
+    public static class Language {
+        public static final String CN = "简体中文";
+        public static final String HK = "繁体中文";
+        public static final String EN = "English";
+        public static final String DE = "Deutsch";
+        public static final String FR = "Le français";
+        public static final String IT = "lingua italiana";
+        public static final String JP = "日本語";
+        public static final String KR = "한국어";
+    }
+
+    public static class LifeStyle {
+        //请求地址
+        public static final String URL = "https://free-api.heweather.com/s6/weather/lifestyle?";
+
+        //位置
+        //1.城市ID
+        //2.经度,纬度
+        //3.城市名称拼音or汉字
+        //4.城市名称,上级城市      消歧义
+        //5.IP地址
+        //6.根据请求来源自动判断     默认
+        public static final String LOCATION = "location";
+        public static final String LOCATION_D = LOCATION + "=auto_ip";//自动判断
+
+        //单位 可选 公制（m）或英制（i） 默认为公制
+        public static final String UNIT = "unit";
+
+        public static String getUrl(Map map) {
+            String str = URL + KEY_D;
+
+            if (map.get(LOCATION) != null && map.get(LOCATION).toString().length() > 0) {
+                str += "&" + LOCATION + "=" + map.get(LOCATION).toString();
+            } else {
+                str += "&" + LOCATION_D;
+            }
+
+            if (map.get(UNIT) != null && map.get(UNIT).toString().length() > 0) {
+                str += "&" + UNIT + "=" + map.get(UNIT).toString();
+            }
+
+            if (map.get(LANG) != null && map.get(LANG).toString().length() > 0) {
+                str += "&" + LANG + "=" + map.get(LANG).toString();
+            } else {
+                str += "&" + LANG + "=" + AppData.getLang();
+            }
+            Log.i("生活指数URL：", str);
+            return str;
+        }
+    }
 }

@@ -31,8 +31,8 @@ public class AppData extends Application {
     public void onCreate() {
         super.onCreate();
         AppData.settings = getSharedPreferences(PREFS_NAME, 0);
-        AppData.lang = settings.getString(ServiceInfo.LANG, "cn");
-        AppData.group = settings.getString(ServiceInfo.HotCity.GROUP, "zh");
+        AppData.lang = settings.getString(ServiceInfo.LANG, "zh");
+        AppData.group = settings.getString(ServiceInfo.HotCity.GROUP, "cn");
         AppData.unit = settings.getString(ServiceInfo.NowWeather.UNIT, "m");
     }
 

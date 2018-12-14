@@ -1,0 +1,32 @@
+<resources>
+	<string name = "app_name"> погода Тяньшу </string>
+	<string name = "fl"> соматосенсорная температура </string>
+	<string name = "hum"> относительная влажность </string>
+	<string name = "pcpn"> осадки </string>
+	<string name = "vis"> visibility </string>
+	<string name = "group"> Область запросов </string>
+	<string name = "zh"> Китай </string>
+	<string name = "overseas"> зарубежные </string>
+	<string name = "world"> world </string>
+	<string name = "lang"> язык </string>
+	<string name = "setting"> Настройки </string>
+	<string name = "unit"> единица температуры </string>
+	<string name = "i"> Дюйм / Фаренгейт </string>
+	<string name = "m"> Метрика / Цельсий </string>
+	<string name = "request_restart"> языковая настройка, которая вступит в силу после перезапуска приложения, перезапустить? </string>
+	<string name = "select_lang"> Выбор языка </string>
+	<string name = "select_group"> Выберите область запроса </string>
+	<string name = "select_unit"> Выберите единицу измерения температуры </string>
+	<string name = "search_hint"> Введите китайские иероглифы или пиньинь для поиска </string>
+	<string name = "hot_city"> горячий город </string>
+	<string name="cn">简体中文</string>
+	<string name="hk">繁体中文</string>
+	<string name="en">English</string>
+	<string name="de">Deutsch</string>
+	<string name="fr">Le français</string>
+	<string name="it">lingua italiana</string>
+	<string name="jp">日本語</string>
+	<string name="kr">한국어</string>
+	<string name="choose_city">Выберите город</string>
+
+</resources>
