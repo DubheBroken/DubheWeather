@@ -1,33 +1,34 @@
 <resources>
 	<string name="app_name">Tianshu weather</string>
-	<string name="fl">somatosensory temperature</string>
-	<string name="hum">relative humidity</string>
-	<string name="pcpn">precipitation </string>
-	<string name="vis"> visibility </string>
+	<string name="fl">Somatosensory temperature</string>
+	<string name="hum">Relative humidity</string>
+	<string name="pcpn">Precipitation</string>
+	<string name="vis">Visibility</string>
 	<string name="group">Query scope </string>
 	<string name="zh">China </string>
 	<string name="overseas">Overseas</string>
-	<string name="world">world</string>
-	<string name="lang">language</string>
+	<string name="world">The World</string>
+	<string name="lang">Language</string>
 	<string name="setting">Settings </string>
-	<string name="unit">temperature unit </string>
+	<string name="unit">Temperature unit</string>
 	<string name="i">Inch / Fahrenheit </string>
 	<string name="m">Metric / Celsius </string>
-	<string name="request_restart"> language setting to take effect after restarting the APP, now restart? </string>
+	<string name="request_restart">Language setting to take effect after restarting the APP, now restart?</string>
 	<string name="select_lang">Select language </string>
 	<string name="select_group">Select the scope of the query</string>
 	<string name="select_unit">Select temperature unit </string>
 	<string name="search_hint">Enter Chinese characters or Pinyin search</string>
-	<string name="hot_city">hot city </string>
-	<string name="cn">简体中文</string>
-	<string name="hk">繁体中文</string>
-	<string name="en">English</string>
-	<string name="de">Deutsch</string>
-	
-	<string name="fr">Le français</string>
-	<string name="it">lingua italiana</string>
-	<string name="jp">日本語</string>
-	<string name="kr">한국어</string>
+	<string name="hot_city">Hot City</string>
 	<string name="choose_city">Select City</string>
-
+	<string name="comf">Comfort</string>
+	<string name="cw">Car Wash Suggest</string>
+	<string name="drsg">Dressing Suggest</string>
+	<string name="flu">Cold Possibility</string>
+	<string name="sport">Sport</string>
+	<string name="trav">Travel advice</string>
+	<string name="uv">UV intensity</string>
+	<string name="air">Air Pollution Diffusion Conditions</string>
+	<string name="lifestyle">Life Style</string>
+	<string name="nowlocation">Current Position</string>
+	<string name="exit_warning">Touch the back button again to exit</string>
 </resources>

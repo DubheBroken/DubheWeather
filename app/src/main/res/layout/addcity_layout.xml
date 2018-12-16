@@ -68,15 +68,13 @@
 		android:layout_height="0dp"
 		android:layout_margin="8dp"
 		android:layout_marginStart="16dp"
-		android:layout_marginTop="8dp"
 		android:layout_marginEnd="16dp"
 		android:orientation="vertical"
+		android:overScrollMode="never"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/text_hotcity_tag"
-		android:overScrollMode="never"
-		/>
+		app:layout_constraintTop_toBottomOf="@+id/text_hotcity_tag" />
 	
 	<TextView
 		android:id="@+id/text_hotcity_tag"
@@ -88,6 +86,22 @@
 		android:textColor="@color/gray_tag"
 		android:textSize="@dimen/tag_size"
 		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/text_nowlocation" />
+	
+	<TextView
+		android:id="@+id/text_nowlocation"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:text="@string/nowlocation"
+		android:textColor="@color/gray_tag"
+		android:textSize="@dimen/tag_size"
+		android:gravity="center"
+		android:drawableLeft="@drawable/icon_location"
+		android:background="@drawable/shape_back_text"
+		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/actv_addcity" />
+
 
 </android.support.constraint.ConstraintLayout>

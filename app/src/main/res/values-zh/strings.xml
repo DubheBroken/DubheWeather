@@ -28,4 +28,15 @@
 	<string name="jp">日本語</string>
 	<string name="kr">한국어</string>
 	<string name="choose_city">选择城市</string>
+	<string name="comf">舒适度</string>
+	<string name="cw">洗车建议</string>
+	<string name="drsg">穿衣建议</string>
+	<string name="flu">感冒几率</string>
+	<string name="sport">运动建议</string>
+	<string name="trav">旅游建议</string>
+	<string name="uv">紫外线强度</string>
+	<string name="air">空气污染情况</string>
+	<string name="lifestyle">生活指数</string>
+	<string name="nowlocation">当前位置</string>
+	<string name="exit_warning">再次触摸返回键来退出</string>
 </resources>

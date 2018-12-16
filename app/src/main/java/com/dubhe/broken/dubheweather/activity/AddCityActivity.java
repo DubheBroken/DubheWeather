@@ -1,5 +1,6 @@
 package com.dubhe.broken.dubheweather.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,6 +52,7 @@ public class AddCityActivity extends AppCompatActivity {
     private TextView textAddcity;
     private AutoCompleteTextView actvAddcity;
     private ListView listViewHotCitys;
+    private TextView textNowLocation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,8 +72,14 @@ public class AddCityActivity extends AppCompatActivity {
         textAddcity = findViewById(R.id.text_addcity);
         actvAddcity = findViewById(R.id.actv_addcity);
         listViewHotCitys = findViewById(R.id.list_hot_citys);
+        textNowLocation = findViewById(R.id.text_nowlocation);
 
         btnBackAddcity.setOnClickListener(v -> finish());
+        textNowLocation.setOnClickListener(v -> {
+            startActivity(new Intent(context, WeatherActivity.class)//跳转到天气详情页
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.animo_no);
+        });
 
         actvAddcity.addTextChangedListener(new TextWatcher() {
             @Override
@@ -120,6 +128,7 @@ public class AddCityActivity extends AppCompatActivity {
 
             }
 
+            @SuppressLint("LongLogTag")
             @Override
             public void onNext(SparseArray s) {
                 switch ((String) s.get(0)) {
@@ -141,7 +150,7 @@ public class AddCityActivity extends AppCompatActivity {
                                         startActivity(new Intent(context, WeatherActivity.class)//跳转到天气详情页
                                                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK)
                                                 .putExtra("city", list_hotcitys.get(position)));//把城市信息传到intent中
-                                                overridePendingTransition(R.anim.slide_in_right,R.anim.animo_no);
+                                        overridePendingTransition(R.anim.slide_in_right, R.anim.animo_no);
                                     });
                                 });
                             } else {
@@ -210,7 +219,7 @@ public class AddCityActivity extends AppCompatActivity {
                                         startActivity(new Intent(context, WeatherActivity.class)//跳转到天气详情页
                                                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK)
                                                 .putExtra("city", list_hotcitys.get(position)));//把城市信息传到intent中
-                                        overridePendingTransition(R.anim.slide_in_right,R.anim.animo_no);
+                                        overridePendingTransition(R.anim.slide_in_right, R.anim.animo_no);
                                     });
                                 });
                             } else {

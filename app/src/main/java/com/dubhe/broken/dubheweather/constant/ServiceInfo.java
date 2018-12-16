@@ -7,7 +7,6 @@ import com.dubhe.broken.dubheweather.application.AppData;
 
 import java.util.Map;
 
-import static com.dubhe.broken.dubheweather.constant.ServiceInfo.HotCity.GROUP_D;
 import static com.dubhe.broken.dubheweather.constant.ServiceInfo.HotCity.NUMBER_D;
 
 /**
@@ -95,7 +94,6 @@ public class ServiceInfo {
         public static final String GROUP_CN = "cn";
         public static final String GROUP_OVER = "overseas";
         public static final String GROUP_ALL = "world";
-        public static String GROUP_D = GROUP + "=" + AppData.getGroup();
 
         //数量 可选 1-20 默认10
         public static final String NUMBER = "number";
@@ -174,7 +172,7 @@ public class ServiceInfo {
             if (map.get(GROUP) != null && map.get(GROUP).toString().length() > 0) {
                 str += "&" + GROUP + "=" + map.get(GROUP).toString();
             } else {
-                str += "&" + GROUP_D;
+                str += "&" + GROUP + "=" + AppData.getGroup();
             }
 
             if (map.get(MODE) != null && map.get(MODE).toString().length() > 0) {

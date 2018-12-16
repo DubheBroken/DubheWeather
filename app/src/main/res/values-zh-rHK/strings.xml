@@ -23,11 +23,21 @@
 	<string name="hk">繁体中文</string>
 	<string name="en">English</string>
 	<string name="de">Deutsch</string>
-	
 	<string name="fr">Le français</string>
 	<string name="it">lingua italiana</string>
 	<string name="jp">日本語</string>
 	<string name="kr">한국어</string>
 	<string name="choose_city">選擇城市</string>
+	<string name="comf">舒適度</string>
+	<string name="cw">洗車建議</string>
+	<string name="drsg">穿衣建議</string>
+	<string name="flu">感冒機率</string>
+	<string name="sport">運動建議</string>
+	<string name="trav">旅遊建議</string>
+	<string name="uv">紫外線強度</string>
+	<string name="air">空氣污染情況</string>
+	<string name="lifestyle">生活指數</string>
+	<string name="nowlocation">當前位置</string>
+	<string name="exit_warning">再次觸摸返回鍵來退出</string>
 
 </resources>
