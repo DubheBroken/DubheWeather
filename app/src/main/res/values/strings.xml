@@ -9,7 +9,6 @@
 	<string name="jp" translatable="false">日本語</string>
 	<string name="kr" translatable="false">한국어</string>
 	
-	
 	<string name="app_name">Tianshu weather</string>
 	<string name="fl">Somatosensory temperature</string>
 	<string name="hum">Relative humidity</string>

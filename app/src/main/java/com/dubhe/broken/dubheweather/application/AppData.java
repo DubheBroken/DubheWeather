@@ -9,6 +9,7 @@ import com.dubhe.broken.dubheweather.constant.ServiceInfo;
 import com.dubhe.broken.dubheweather.utils.ResHelper;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -31,8 +32,27 @@ public class AppData extends Application {
     public void onCreate() {
         super.onCreate();
         AppData.settings = getSharedPreferences(PREFS_NAME, 0);
-        AppData.lang = settings.getString(ServiceInfo.LANG, "zh");
-        AppData.group = settings.getString(ServiceInfo.HotCity.GROUP, "cn");
+        Locale locale = getResources().getConfiguration().locale;
+        String lang = "en";
+        if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
+            lang = "cn";
+        } else if (locale.equals(Locale.TRADITIONAL_CHINESE)) {
+            lang = "hk";
+        } else if (locale.equals(Locale.ENGLISH)) {
+            lang = "en";
+        } else if (locale.equals(Locale.GERMAN)) {
+            lang = "de";
+        } else if (locale.equals(Locale.FRENCH)) {
+            lang = "fr";
+        } else if (locale.equals(Locale.ITALIAN)) {
+            lang = "it";
+        } else if (locale.equals(Locale.JAPANESE)) {
+            lang = "jp";
+        } else if (locale.equals(Locale.KOREAN)) {
+            lang = "kr";
+        }
+        AppData.lang = settings.getString(ServiceInfo.LANG, lang);
+        AppData.group = settings.getString(ServiceInfo.HotCity.GROUP, ServiceInfo.HotCity.GROUP_ALL);
         AppData.unit = settings.getString(ServiceInfo.NowWeather.UNIT, "m");
     }
 
@@ -55,14 +75,14 @@ public class AppData extends Application {
 
     public static Map getUnitStr() {
         Map<String, String> map = new HashMap<>();
-        switch (AppData.unit){
+        switch (AppData.unit) {
             case "m":
-                map.put(TMP_UNIT,"℃");
-                map.put(VISIBILITY,"km");
+                map.put(TMP_UNIT, "℃");
+                map.put(VISIBILITY, "km");
                 break;
             case "i":
-                map.put(TMP_UNIT,"℉");
-                map.put(VISIBILITY,"mile");
+                map.put(TMP_UNIT, "℉");
+                map.put(VISIBILITY, "mile");
                 break;
         }
         return map;

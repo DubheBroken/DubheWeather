@@ -96,6 +96,11 @@ public class SettingActivity extends AppCompatActivity {
         constraintSettingUnit = findViewById(R.id.constraint_setting_unit);
         constraintSetting = findViewById(R.id.constraint_setting);
 
+        textSettingGroupTag.setText(getResources().getString(R.string.group));
+        textSettingLangTag.setText(getResources().getString(R.string.lang));
+        textSettingUnitTag.setText(getResources().getString(R.string.unit));
+        textSetting.setText(getResources().getString(R.string.setting));
+
         textSettingGroup.setText(AppData.getSettingStr(context, AppData.getGroup()));
         textSettingLang.setText(AppData.getSettingStr(context, AppData.getLang()));
         textSettingUnit.setText(AppData.getSettingStr(context, AppData.getUnit()));

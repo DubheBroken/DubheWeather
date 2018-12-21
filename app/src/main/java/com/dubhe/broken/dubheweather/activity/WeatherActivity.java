@@ -2,9 +2,7 @@ package com.dubhe.broken.dubheweather.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -20,6 +18,7 @@ import com.alibaba.fastjson.JSON;
 import com.dubhe.broken.dubheweather.R;
 import com.dubhe.broken.dubheweather.application.AppData;
 import com.dubhe.broken.dubheweather.constant.ServiceInfo;
+import com.dubhe.broken.dubheweather.entity.FutureWeather;
 import com.dubhe.broken.dubheweather.entity.HotCity;
 import com.dubhe.broken.dubheweather.entity.LifeStyle;
 import com.dubhe.broken.dubheweather.entity.Weather;
@@ -29,6 +28,10 @@ import com.dubhe.broken.dubheweather.utils.ResHelper;
 import com.dubhe.broken.dubheweather.utils.ToastUtils;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +55,9 @@ import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
 
+    private static final int TODAY_MODE = 0;
+    private static final int ONEDAY_LATER_MODE = 1;
+    private static final int TOWDAY_LATER_MODE = 2;
     private Context context = this;
     private TextView btnChoosecity;
     private TextView textCityname;
@@ -120,11 +126,18 @@ public class WeatherActivity extends AppCompatActivity {
     private View line11;
     private TextView textAir;
     private boolean isExit = false;
+    private SparseArray sparseArray_today;
+    private SparseArray sparseArray_future;
+    private TextView textTolastday;
+    private TextView textNowDay;
+    private TextView textTonextday;
+    private int now_mode = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_layout);
+        initView();
     }
 
     @Override
@@ -138,19 +151,22 @@ public class WeatherActivity extends AppCompatActivity {
         exitByDoubleClick();
     }
 
+    /**
+     * 双击返回键退出
+     */
     private void exitByDoubleClick() {
-        Timer tExit=null;
-        if(!isExit){
-            isExit=true;
-            Toast.makeText(context,getResources().getString(R.string.exit_warning),Toast.LENGTH_SHORT).show();
-            tExit=new Timer();
+        Timer tExit = null;
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(context, getResources().getString(R.string.exit_warning), Toast.LENGTH_SHORT).show();
+            tExit = new Timer();
             tExit.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    isExit=false;//取消退出
+                    isExit = false;//取消退出
                 }
-            },2000);// 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
-        }else{
+            }, 2000);// 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+        } else {
             finish();
             System.exit(0);
         }
@@ -220,6 +236,20 @@ public class WeatherActivity extends AppCompatActivity {
         line11 = findViewById(R.id.line11);
         textAir = findViewById(R.id.text_air);
 
+        textFlTag.setText(getResources().getString(R.string.fl));
+        textHumTag.setText(getResources().getString(R.string.hum));
+        textPcpnTag.setText(getResources().getString(R.string.pcpn));
+        textVisTag.setText(getResources().getString(R.string.vis));
+        textLifestyleTag.setText(getResources().getString(R.string.lifestyle));
+        textComfTag.setText(getResources().getString(R.string.comf));
+        textCwTag.setText(getResources().getString(R.string.cw));
+        textDrsgTag.setText(getResources().getString(R.string.drsg));
+        textFluTag.setText(getResources().getString(R.string.flu));
+        textSportTag.setText(getResources().getString(R.string.sport));
+        textTravTag.setText(getResources().getString(R.string.trav));
+        textUvTag.setText(getResources().getString(R.string.uv));
+        textAirTag.setText(getResources().getString(R.string.air));
+
         btnChoosecity.setOnClickListener(v -> {
             startActivity(new Intent(context, AddCityActivity.class));
             overridePendingTransition(R.anim.slide_in_left, R.anim.animo_no);
@@ -241,9 +271,245 @@ public class WeatherActivity extends AppCompatActivity {
         }
         getWeatherInfo();
         getLifeStyleInfo();
+        textTolastday = findViewById(R.id.text_tolastday);
+        textNowDay = findViewById(R.id.text_now_day);
+        textTonextday = findViewById(R.id.text_tonextday);
+        textTolastday.setVisibility(View.INVISIBLE);
+
+        textTonextday.setOnClickListener(v -> initWeather(now_mode + 1, sparseArray_future));
+
+
+        textTolastday.setOnClickListener(v ->
+        {
+            if (now_mode == 1) {
+                initWeather(0, sparseArray_today);
+            } else {
+                initWeather(now_mode - 1, sparseArray_future);
+            }
+        });
+    }
+
+    /**
+     * 转换时间字符串格式
+     *
+     * @param datestr 服务器传来的时间字符串
+     * @return 转换后的时间字符串
+     */
+    private String formatDateStr(String datestr) {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd");
+        if (datestr != null) {
+            try {
+                date = new SimpleDateFormat("yyyy-MM-dd").parse(datestr);
+            } catch (ParseException e) {
+                Log.e("时间转换", "出错", e);
+            }
+        }
+        return simpleDateFormat.format(date);
+    }
+
+    /**
+     * 初始化天气数据
+     *
+     * @param s 服务器传来的天气数据
+     */
+    private void initWeather(int mode, SparseArray s) {
+        now_mode = mode;
+        switch (mode) {
+            case TODAY_MODE:
+                //显示今日天气
+                textTolastday.setVisibility(View.INVISIBLE);
+                textTonextday.setVisibility(View.VISIBLE);
+                textNowDay.setText(formatDateStr(null));
+                Date newDate2 = new Date(new Date().getTime() + (long) 24 * 60 * 60 * 1000);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd");
+                String dateOk = simpleDateFormat.format(newDate2);
+                textTonextday.setText(dateOk);
+                Weather weather = JSON.parseObject(s.get(1).toString(), Weather.class);
+                if (weather != null) {
+                    List<Weather.HeWeather6Bean> list_heWeather6Bean = weather.getHeWeather6();
+                    if (list_heWeather6Bean.get(0).getStatus().equals(ServiceInfo.Status.OK)) {
+                        Weather.HeWeather6Bean.NowBean nowBean = list_heWeather6Bean.get(0).getNow();
+                        textCityname.setText(list_heWeather6Bean.get(0).getBasic().getLocation());
+                        textTmpWeather.setText(nowBean.getTmp() + AppData.getUnitStr().get(AppData.TMP_UNIT));//当前气温
+                        textCitytmp.setText(nowBean.getTmp() + AppData.getUnitStr().get(AppData.TMP_UNIT));//当前气温
+                        constraintFl.setVisibility(View.VISIBLE);//体感温度隐藏，未来体感温度无法预测
+                        textFl.setText(nowBean.getFl() + AppData.getUnitStr().get(AppData.TMP_UNIT));//体感温度
+                        textCondtxtWeather.setText(nowBean.getCond_txt());
+                        textWinddir.setText(nowBean.getWind_dir());
+                        textWindsc.setText(nowBean.getWind_sc());
+                        textHum.setText(nowBean.getHum());
+                        textPcpn.setText(nowBean.getPcpn());
+                        textVis.setText(nowBean.getVis() + AppData.getUnitStr().get(AppData.VISIBILITY));//能见度
+                        initIcon(nowBean.getCond_code());
+                    } else {
+                        Log.e(TAG, ServiceInfo.Status.getMessage(list_heWeather6Bean.get(0).getStatus()));
+                    }
+                }
+                break;
+            case ONEDAY_LATER_MODE:
+            case TOWDAY_LATER_MODE:
+                //显示未来天气
+                textTolastday.setVisibility(View.VISIBLE);
+                if (mode == TOWDAY_LATER_MODE) {
+                    textTonextday.setVisibility(View.INVISIBLE);
+                } else {
+                    textTonextday.setVisibility(View.VISIBLE);
+                }
+                FutureWeather futureWeather = JSON.parseObject(s.get(1).toString(), FutureWeather.class);
+                if (futureWeather != null) {
+                    List<FutureWeather.HeWeather6Bean> list_fuheWeather6Bean = futureWeather.getHeWeather6();
+                    if (list_fuheWeather6Bean.get(0).getStatus().equals(ServiceInfo.Status.OK)) {
+                        List<FutureWeather.HeWeather6Bean.DailyForecastBean> dailyForecastBeanList = list_fuheWeather6Bean.get(0).getDaily_forecast();
+                        textCityname.setText(list_fuheWeather6Bean.get(0).getBasic().getLocation());
+                        textTmpWeather.setText(dailyForecastBeanList.get(mode).getTmp_min() + AppData.getUnitStr().get(AppData.TMP_UNIT)
+                                + "~" + dailyForecastBeanList.get(mode).getTmp_max() + AppData.getUnitStr().get(AppData.TMP_UNIT));//气温
+                        textCitytmp.setText(dailyForecastBeanList.get(mode).getTmp_min() + AppData.getUnitStr().get(AppData.TMP_UNIT)
+                                + "~" + dailyForecastBeanList.get(mode).getTmp_max() + AppData.getUnitStr().get(AppData.TMP_UNIT));//气温
+                        constraintFl.setVisibility(View.GONE);//体感温度隐藏，未来体感温度无法预测
+                        textCondtxtWeather.setText(dailyForecastBeanList.get(mode).getCond_txt_d());
+                        textWinddir.setText(dailyForecastBeanList.get(mode).getWind_dir());
+                        textWindsc.setText(dailyForecastBeanList.get(mode).getWind_sc());
+                        textHum.setText(dailyForecastBeanList.get(mode).getHum());
+                        textPcpn.setText(dailyForecastBeanList.get(mode).getPcpn());
+                        textVis.setText(dailyForecastBeanList.get(mode).getVis() + AppData.getUnitStr().get(AppData.VISIBILITY));//能见度
+                        textNowDay.setText(formatDateStr(dailyForecastBeanList.get(mode).getDate()));
+                        Date newDate3 = null;
+                        Date newDate4 = null;
+                        try {
+                            newDate3 = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(dailyForecastBeanList.get(mode).getDate()).getTime() + (long) 24 * 60 * 60 * 1000);
+                            newDate4 = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(dailyForecastBeanList.get(mode).getDate()).getTime() - (long) 24 * 60 * 60 * 1000);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
+                        String nextDay = sdf.format(newDate3);
+                        String lastDay = sdf.format(newDate4);
+                        textTonextday.setText(nextDay);
+                        textTolastday.setText(lastDay);
+                        initIcon(dailyForecastBeanList.get(mode).getCond_code_d());
+                    } else {
+                        Log.e(TAG, ServiceInfo.Status.getMessage(list_fuheWeather6Bean.get(mode).getStatus()));
+                    }
+                }
+                break;
+        }
+
+    }
+
+    private void initIcon(String code) {
+        String code_str;
+        switch (code) {
+            case "200":
+            case "201":
+                code_str = "200";
+                break;
+            case "202":
+            case "203":
+            case "204":
+                code_str = "202";
+                break;
+            case "205":
+            case "206":
+            case "207":
+            case "208":
+            case "209":
+            case "210":
+                code_str = "205";
+                break;
+            case "211":
+            case "212":
+            case "213":
+                code_str = "211";
+                break;
+            case "300":
+            case "305":
+            case "309":
+            case "314":
+                code_str = "305";
+                break;
+            case "301":
+            case "307":
+            case "315":
+            case "399":
+                code_str = "307";
+                break;
+            case "308":
+            case "310":
+            case "311":
+            case "312":
+            case "316":
+            case "317":
+            case "318":
+                code_str = "310";
+                break;
+            case "400":
+            case "404":
+            case "406":
+            case "407":
+            case "408":
+                code_str = "400";
+                break;
+            case "401":
+            case "409":
+                code_str = "401";
+                break;
+            case "402":
+            case "410":
+                code_str = "402";
+                break;
+            case "405":
+            case "499":
+                code_str = "499";
+                break;
+            case "509":
+            case "514":
+                code_str = "509";
+                break;
+            case "510":
+            case "515":
+                code_str = "510";
+                break;
+            default:
+                code_str = code;
+                break;
+        }
+        switch (code_str) {
+            case "901":
+                constraintTmpWeather.setBackgroundColor(
+                        getResources().getColor(R.color.blue));
+                break;
+            case "900":
+                constraintTmpWeather.setBackgroundColor(
+                        getResources().getColor(R.color.orange));
+                break;
+            case "999":
+                constraintTmpWeather.setBackgroundColor(
+                        getResources().getColor(R.color.black));
+                break;
+            default:
+                constraintTmpWeather.setBackground(
+                        getResources().getDrawable(
+                                ResHelper.getResId(ServiceInfo.BACK_TAG + code_str, R.drawable.class)));
+                break;
+        }
+
+
+        textTitleimg.setBackground(
+                DrawableTintUtil.tintDrawable(
+                        getResources().getDrawable(
+                                ResHelper.getResId(ServiceInfo.IMG_TAG + code, R.drawable.class))
+                        , getResources().getColor(R.color.white)));
+
+        textCondimg.setBackground(
+                DrawableTintUtil.tintDrawable(
+                        getResources().getDrawable(
+                                ResHelper.getResId(ServiceInfo.IMG_TAG + code, R.drawable.class))
+                        , getResources().getColor(R.color.white)));
     }
 
     private void getWeatherInfo() {
+        //获取今日天气
         Observable.create((ObservableOnSubscribe<SparseArray>) emitter -> {
             Map<String, String> map = new HashMap<>();
             if (cid != null && !"".equals(cid)) {
@@ -273,136 +539,57 @@ public class WeatherActivity extends AppCompatActivity {
             public void onNext(SparseArray s) {
                 switch ((String) s.get(0)) {
                     case "200":
-                        Weather weather = JSON.parseObject(s.get(1).toString(), Weather.class);
-                        if (weather != null) {
-                            List<Weather.HeWeather6Bean> list_heWeather6Bean = weather.getHeWeather6();
-                            if (list_heWeather6Bean.get(0).getStatus().equals(ServiceInfo.Status.OK)) {
-                                Weather.HeWeather6Bean.NowBean nowBean = list_heWeather6Bean.get(0).getNow();
-                                runOnUiThread(() -> {
-                                    textCityname.setText(list_heWeather6Bean.get(0).getBasic().getLocation());
-                                    textTmpWeather.setText(nowBean.getTmp() + AppData.getUnitStr().get(AppData.TMP_UNIT));//当前气温
-                                    textCitytmp.setText(nowBean.getTmp() + AppData.getUnitStr().get(AppData.TMP_UNIT));//当前气温
-                                    textFl.setText(nowBean.getFl() + AppData.getUnitStr().get(AppData.TMP_UNIT));//体感温度
-                                    textCondtxtWeather.setText(nowBean.getCond_txt());
-                                    textWinddir.setText(nowBean.getWind_dir());
-                                    textWindsc.setText(nowBean.getWind_sc());
-                                    textHum.setText(nowBean.getHum());
-                                    textPcpn.setText(nowBean.getPcpn());
-                                    textVis.setText(nowBean.getVis() + AppData.getUnitStr().get(AppData.VISIBILITY));//能见度
+                        sparseArray_today = s;
+                        runOnUiThread(() -> initWeather(TODAY_MODE, sparseArray_today));
+                        break;
+                    default:
+                        ToastUtils.show(context, "连接服务器失败");
+                        break;
+                }
+            }
 
-                                    String code;
-                                    switch (nowBean.getCond_code()) {
-                                        case "200":
-                                        case "201":
-                                            code = "200";
-                                            break;
-                                        case "202":
-                                        case "203":
-                                        case "204":
-                                            code = "202";
-                                            break;
-                                        case "205":
-                                        case "206":
-                                        case "207":
-                                        case "208":
-                                        case "209":
-                                        case "210":
-                                            code = "205";
-                                            break;
-                                        case "211":
-                                        case "212":
-                                        case "213":
-                                            code = "211";
-                                            break;
-                                        case "300":
-                                        case "305":
-                                        case "309":
-                                        case "314":
-                                            code = "305";
-                                            break;
-                                        case "301":
-                                        case "307":
-                                        case "315":
-                                        case "399":
-                                            code = "307";
-                                            break;
-                                        case "308":
-                                        case "310":
-                                        case "311":
-                                        case "312":
-                                        case "316":
-                                        case "317":
-                                        case "318":
-                                            code = "310";
-                                            break;
-                                        case "400":
-                                        case "404":
-                                        case "406":
-                                        case "407":
-                                        case "408":
-                                            code = "400";
-                                            break;
-                                        case "401":
-                                        case "409":
-                                            code = "401";
-                                            break;
-                                        case "402":
-                                        case "410":
-                                            code = "402";
-                                            break;
-                                        case "405":
-                                        case "499":
-                                            code = "499";
-                                            break;
-                                        case "509":
-                                        case "514":
-                                            code = "509";
-                                            break;
-                                        case "510":
-                                        case "515":
-                                            code = "510";
-                                            break;
-                                        default:
-                                            code = nowBean.getCond_code();
-                                            break;
-                                    }
-                                    switch (code) {
-                                        case "901":
-                                            constraintTmpWeather.setBackgroundColor(
-                                                    getResources().getColor(R.color.blue));
-                                            break;
-                                        case "900":
-                                            constraintTmpWeather.setBackgroundColor(
-                                                    getResources().getColor(R.color.orange));
-                                            break;
-                                        case "999":
-                                            constraintTmpWeather.setBackgroundColor(
-                                                    getResources().getColor(R.color.black));
-                                            break;
-                                        default:
-                                            constraintTmpWeather.setBackground(
-                                                    getResources().getDrawable(
-                                                            ResHelper.getResId(ServiceInfo.BACK_TAG + code, R.drawable.class)));
-                                            break;
-                                    }
+            @Override
+            public void onError(Throwable e) {
 
+            }
 
-                                    textTitleimg.setBackground(
-                                            DrawableTintUtil.tintDrawable(
-                                                    getResources().getDrawable(
-                                                            ResHelper.getResId(ServiceInfo.IMG_TAG + nowBean.getCond_code(), R.drawable.class))
-                                                    , getResources().getColor(R.color.white)));
+            @Override
+            public void onComplete() {
 
-                                    textCondimg.setBackground(
-                                            DrawableTintUtil.tintDrawable(
-                                                    getResources().getDrawable(
-                                                            ResHelper.getResId(ServiceInfo.IMG_TAG + nowBean.getCond_code(), R.drawable.class))
-                                                    , getResources().getColor(R.color.white)));
-                                });
-                            } else {
-                                Log.e(TAG, ServiceInfo.Status.getMessage(list_heWeather6Bean.get(0).getStatus()));
-                            }
-                        }
+            }
+        });
+
+        //获取未来3日天气
+        Observable.create((ObservableOnSubscribe<SparseArray>) emitter -> {
+            Map<String, String> map = new HashMap<>();
+            if (cid != null && !"".equals(cid)) {
+                map.put(ServiceInfo.FutureWeather.LOCATION, cid);
+            }
+            HttpUtils.sendOKHttpRequest(ServiceInfo.FutureWeather.getUrl(map), new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    emitter.onError(e);
+                }
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    SparseArray<String> sparseArray = new SparseArray();
+                    sparseArray.put(0, Integer.toString(response.code()));
+                    sparseArray.put(1, response.body() != null ? response.body().string() : "");
+                    emitter.onNext(sparseArray);
+                }
+            });
+        }).subscribe(new Observer<SparseArray>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(SparseArray s) {
+                switch ((String) s.get(0)) {
+                    case "200":
+                        sparseArray_future = s;
                         break;
                     default:
                         ToastUtils.show(context, "连接服务器失败");

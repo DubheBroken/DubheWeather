@@ -239,17 +239,6 @@ public class ServiceInfo {
 
     }
 
-    public static class Language {
-        public static final String CN = "简体中文";
-        public static final String HK = "繁体中文";
-        public static final String EN = "English";
-        public static final String DE = "Deutsch";
-        public static final String FR = "Le français";
-        public static final String IT = "lingua italiana";
-        public static final String JP = "日本語";
-        public static final String KR = "한국어";
-    }
-
     public static class LifeStyle {
         //请求地址
         public static final String URL = "https://free-api.heweather.com/s6/weather/lifestyle?";
@@ -288,5 +277,56 @@ public class ServiceInfo {
             Log.i("生活指数URL：", str);
             return str;
         }
+    }
+
+    public static class FutureWeather {
+        //请求地址
+        public static final String URL = "https://free-api.heweather.net/s6/weather/forecast?";
+
+        //位置
+        //1.城市ID
+        //2.经度,纬度
+        //3.城市名称拼音or汉字
+        //4.城市名称,上级城市      消歧义
+        //5.IP地址
+        //6.根据请求来源自动判断     默认
+        public static final String LOCATION = "location";
+        public static final String LOCATION_D = LOCATION + "=auto_ip";//自动判断
+
+        //单位 可选 公制（m）或英制（i） 默认为公制
+        public static final String UNIT = "unit";
+
+        public static String getUrl(Map map) {
+            String str = URL + KEY_D;
+
+            if (map.get(LOCATION) != null && map.get(LOCATION).toString().length() > 0) {
+                str += "&" + LOCATION + "=" + map.get(LOCATION).toString();
+            } else {
+                str += "&" + LOCATION_D;
+            }
+
+            if (map.get(UNIT) != null && map.get(UNIT).toString().length() > 0) {
+                str += "&" + UNIT + "=" + map.get(UNIT).toString();
+            }
+
+            if (map.get(LANG) != null && map.get(LANG).toString().length() > 0) {
+                str += "&" + LANG + "=" + map.get(LANG).toString();
+            } else {
+                str += "&" + LANG + "=" + AppData.getLang();
+            }
+            Log.i("未来天气URL：", str);
+            return str;
+        }
+    }
+
+    public static class Language {
+        public static final String CN = "简体中文";
+        public static final String HK = "繁体中文";
+        public static final String EN = "English";
+        public static final String DE = "Deutsch";
+        public static final String FR = "Le français";
+        public static final String IT = "lingua italiana";
+        public static final String JP = "日本語";
+        public static final String KR = "한국어";
     }
 }
