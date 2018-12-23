@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">สภาพอากาศที่ Tianshu</string>
+	<string name="app_name">สภาพอากาศที่ Dubhe</string>
 	<string name="fl">อุณหภูมิ Somatosensory</string>
 	<string name="hum">ความชื้นสัมพัทธ์</string>
 	<string name="pcpn">การเร่งรัด</string>
@@ -13,7 +13,6 @@
 	<string name="unit">หน่วยอุณหภูมิ</string>
 	<string name="i">นิ้ว / องศาฟาเรนไฮต์</string>
 	<string name="m">เมตริก / เซลเซียส</string>
-	<string name="request_restart">การตั้งค่าภาษาจะมีผลหลังจากรีสตาร์ท APP แล้วรีสตาร์ทหรือไม่?</string>
 	<string name="select_lang">เลือกภาษา</string>
 	<string name="select_group">เลือกขอบเขตของข้อความค้นหา</string>
 	<string name="select_unit">เลือกหน่วยอุณหภูมิ</string>
@@ -30,5 +29,14 @@
 	<string name="air">เงื่อนไขการแพร่กระจายของมลพิษทางอากาศ</string>
 	<string name="lifestyle">ไลฟ์สไตล์</string>
 	<string name="nowlocation">ตำแหน่งปัจจุบัน</string>
-	<string name="exit_warning">Appuyez à nouveau sur le bouton Retour pour quitter</string>
+	<string name="exit_warning">แตะปุ่มย้อนกลับอีกครั้งเพื่อออก</string>
+	<string name="select_date_text_style">เลือกรูปแบบการแสดงวันที่</string>
+	<string name="about">เกี่ยวกับ</string>
+	<string name="datetextstyle">รูปแบบข้อความวันที่</string>
+	<string name="today">ในวันนี้</string>
+	<string name="tomorrow">วันพรุ่งนี้</string>
+	<string name="the_day_after_tomorrow">วันมะรืนนี้</string>
+	<string name="date_text_style_today">วันนี้พรุ่งนี้</string>
+	<string name="date_text_style_week">ชื่อสัปดาห์</string>
+	<string name="date_text_style_date">วันที่</string>
 </resources>

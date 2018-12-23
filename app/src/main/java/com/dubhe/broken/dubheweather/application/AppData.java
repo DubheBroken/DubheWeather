@@ -22,9 +22,11 @@ public class AppData extends Application {
 
     public static final String TMP_UNIT = "tmp_unit";
     public static final String VISIBILITY = "visibility";
+    private static final String DATE_TEXT_STYLE = "date_text_style";
     private static String lang;
     private static String group;
     private static String unit;
+    private static String dateTextStyle;
     private static SharedPreferences settings;
     public static final String PREFS_NAME = "config";//设置文件名称
 
@@ -54,6 +56,15 @@ public class AppData extends Application {
         AppData.lang = settings.getString(ServiceInfo.LANG, lang);
         AppData.group = settings.getString(ServiceInfo.HotCity.GROUP, ServiceInfo.HotCity.GROUP_ALL);
         AppData.unit = settings.getString(ServiceInfo.NowWeather.UNIT, "m");
+        AppData.dateTextStyle = settings.getString(DATE_TEXT_STYLE, getSettingCode(this, R.string.date_text_style_date));
+    }
+
+    public static String getDateTextStyle() {
+        return dateTextStyle;
+    }
+
+    public static void setDateTextStyle(String dateTextStyle) {
+        AppData.dateTextStyle = dateTextStyle;
     }
 
     public static void saveData() {
@@ -61,6 +72,7 @@ public class AppData extends Application {
         editor.putString(ServiceInfo.LANG, AppData.lang);
         editor.putString(ServiceInfo.HotCity.GROUP, AppData.group);
         editor.putString(ServiceInfo.NowWeather.UNIT, AppData.unit);
+        editor.putString(DATE_TEXT_STYLE, AppData.dateTextStyle);
         editor.apply();
     }
 

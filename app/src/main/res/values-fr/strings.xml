@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Météo à Tianshu</string>
+	<string name="app_name">Météo à Dubhe</string>
 	<string name="fl">Température somatosensorielle</string>
 	<string name="hum">Humidité relative</string>
 	<string name="pcpn">Précipitation</string>
@@ -13,7 +13,6 @@
 	<string name="unit">Unité de température</string>
 	<string name="i">Pouces / Fahrenheit</string>
 	<string name="m">Métrique / Celsius</string>
-	<string name="request_restart">Le paramètre de langue prend effet après le redémarrage de l\'APP, maintenant redémarrer</string>
 	<string name="select_lang">Sélectionnez la langue</string>
 	<string name="select_group">Sélectionnez l\'étendue de la requête</string>
 	<string name="select_unit">Sélectionnez l\'unité de température</string>
@@ -31,5 +30,14 @@
 	<string name="lifestyle">Style de vie</string>
 	<string name="nowlocation">Position actuelle</string>
 	<string name="exit_warning">Appuyez à nouveau sur le bouton Retour pour quitter</string>
+	<string name="select_date_text_style">Sélectionnez le style d\'affichage de la date</string>
+	<string name="about">Sur</string>
+	<string name="datetextstyle">Style de texte de date</string>
+	<string name="today">aujourd\'hui</string>
+	<string name="tomorrow">demain</string>
+	<string name="the_day_after_tomorrow">le surlendemain</string>
+	<string name="date_text_style_today">aujourd\'hui demain</string>
+	<string name="date_text_style_week">Nom de la semaine</string>
+	<string name="date_text_style_date">rendez-vous amoureux</string>
 
 </resources>

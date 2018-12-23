@@ -10,7 +10,7 @@
 		android:id="@+id/textView"
 		android:layout_width="240dp"
 		android:layout_height="120dp"
-		android:text="@string/request_restart"
+		android:text="提示信息"
 		android:textColor="@color/text_black"
 		android:textSize="18sp"
 		app:layout_constraintBottom_toTopOf="@+id/button_cancel_dialog"

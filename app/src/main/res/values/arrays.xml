@@ -5,7 +5,7 @@
 		<item>@string/overseas</item>
 		<item>@string/world</item>
 	</string-array>
-
+	
 	<string-array name="unit">
 		<item>@string/i</item>
 		<item>@string/m</item>
@@ -22,4 +22,10 @@
 		<item>@string/kr</item>
 	</string-array>
 	
+	<string-array name="date_text_style">
+		<item>@string/date_text_style_today</item>
+		<item>@string/date_text_style_week</item>
+		<item>@string/date_text_style_date</item>
+	</string-array>
+
 </resources>

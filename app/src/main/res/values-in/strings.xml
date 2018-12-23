@@ -13,7 +13,6 @@
 	<string name="unit">तापमान इकाई</string>
 	<string name="i">इंच / फारेनहाइट</string>
 	<string name="m">मीट्रिक / सेल्सियस</string>
-	<string name="request_restart">एपीपी को पुनरारंभ करने के बाद भाषा सेटिंग प्रभावी हो जाएगी, अब पुनरारंभ करें?</string>
 	<string name="select_lang">भाषा का चयन करें</string>
 	<string name="select_group">क्वेरी के दायरे का चयन करें</string>
 	<string name="select_unit">तापमान इकाई का चयन करें</string>
@@ -31,4 +30,13 @@
 	<string name="lifestyle">जीवन शैली</string>
 	<string name="nowlocation">वर्तमान पद</string>
 	<string name="exit_warning">बाहर निकलने के लिए फिर से बटन को स्पर्श करें</string>
+	<string name="select_date_text_style">दिनांक प्रदर्शन शैली का चयन करें</string>
+	<string name="about">के बारे में</string>
+	<string name="datetextstyle">दिनांक पाठ शैली</string>
+	<string name="today">आज</string>
+	<string name="tomorrow">आने वाला कल</string>
+	<string name="the_day_after_tomorrow">पर्सो</string>
+	<string name="date_text_style_today">आज कल</string>
+	<string name="date_text_style_week">सप्ताह का नाम</string>
+	<string name="date_text_style_date">दिनांक</string>
 </resources>

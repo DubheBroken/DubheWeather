@@ -13,7 +13,6 @@
 	<string name="unit">Единица измерения температуры</string>
 	<string name="i">Дюйм / Фаренгейт</string>
 	<string name="m">Метрическая / Цельсия</string>
-	<string name="request_restart">Настройка языка, чтобы вступить в силу после перезапуска приложения, теперь перезапустить?</string>
 	<string name="select_lang">Выберите язык</string>
 	<string name="select_group">Выберите объем запроса</string>
 	<string name="select_unit">Выберите единицу измерения температуры</string>
@@ -31,4 +30,14 @@
 	<string name="lifestyle">Стиль жизни</string>
 	<string name="nowlocation">Текущая позиция</string>
 	<string name="exit_warning">Нажмите кнопку назад еще раз, чтобы выйти</string>
+	<string name="select_date_text_style">Выберите стиль отображения даты</string>
+	<string name="about">Около</string>
+	<string name="datetextstyle">Стиль текста даты</string>
+	<string name="today">сегодня</string>
+	<string name="tomorrow">завтра</string>
+	<string name="the_day_after_tomorrow">послезавтра</string>
+	<string name="date_text_style_today">сегодня завтра</string>
+	<string name="date_text_style_week">Название недели</string>
+	<string name="date_text_style_date">Дата</string>
+
 </resources>

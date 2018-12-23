@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Tianshu Wetter</string>
+	<string name="app_name">Dubhe Wetter</string>
 	<string name="fl">Somatosensorische Temperatur</string>
 	<string name="hum">Relative Luftfeuchtigkeit</string>
 	<string name="pcpn">Niederschlag</string>
@@ -13,7 +13,6 @@
 	<string name="unit">Temperatureinheit</string>
 	<string name="i">Zoll / Fahrenheit</string>
 	<string name="m">Metrisch / Celsius</string>
-	<string name="request_restart">Spracheinstellung, die nach dem Neustart der APP wirksam wird, jetzt neu starten?</string>
 	<string name="select_lang">Sprache wählen</string>
 	<string name="select_group">Wählen Sie den Umfang der Abfrage aus</string>
 	<string name="select_unit">Temperatureinheit auswählen</string>
@@ -31,5 +30,14 @@
 	<string name="lifestyle">Lebensstil</string>
 	<string name="nowlocation">Aktuelle Position</string>
 	<string name="exit_warning">Нажмите кнопку назад еще раз, чтобы выйти</string>
+	<string name="select_date_text_style">Wählen Sie den Datumsanzeige-Stil aus</string>
+	<string name="about">Über</string>
+	<string name="datetextstyle">Datum Textstil</string>
+	<string name="today">heute</string>
+	<string name="tomorrow">Morgen</string>
+	<string name="the_day_after_tomorrow">übermorgen</string>
+	<string name="date_text_style_today">heute Morgen</string>
+	<string name="date_text_style_week">Name der Woche</string>
+	<string name="date_text_style_date">Datum</string>
 
 </resources>

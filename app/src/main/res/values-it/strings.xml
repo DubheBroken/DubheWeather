@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Tempo Tianshu</string>
+	<string name="app_name">Tempo Dubhe</string>
 	<string name="fl">Temperatura somatosensoriale</string>
 	<string name="hum">Umidità relativa</string>
 	<string name="pcpn">precipitazione</string>
@@ -13,7 +13,6 @@
 	<string name="unit">Unità di temperatura</string>
 	<string name="i">Inch / Fahrenheit</string>
 	<string name="m">Metrico / Celsius</string>
-	<string name="request_restart">L\'impostazione della lingua ha effetto dopo aver riavviato l\'APP, ora si riavvia?</string>
 	<string name="select_lang">Seleziona la lingua</string>
 	<string name="select_group">Seleziona l\'ambito della query</string>
 	<string name="select_unit">Seleziona unità di temperatura</string>
@@ -31,4 +30,14 @@
 	<string name="lifestyle">Stile di vita</string>
 	<string name="nowlocation">Posizione attuale</string>
 	<string name="exit_warning">Tocca di nuovo il pulsante Indietro per uscire</string>
+	<string name="select_date_text_style">Seleziona lo stile di visualizzazione della data</string>
+	<string name="about">Di</string>
+	<string name="datetextstyle">Stile del testo della data</string>
+	<string name="today">oggi</string>
+	<string name="tomorrow">Domani</string>
+	<string name="the_day_after_tomorrow">il giorno dopo domani</string>
+	<string name="date_text_style_today">oggi domani</string>
+	<string name="date_text_style_week">Nome della settimana</string>
+	<string name="date_text_style_date">Data</string>
+
 </resources>

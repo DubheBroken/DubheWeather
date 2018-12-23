@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Tianshu 날씨</string>
+	<string name="app_name">Dubhe 날씨</string>
 	<string name="fl">체온 감응 온도</string>
 	<string name="hum">상대 습도</string>
 	<string name="pcpn">강수량</string>
@@ -13,7 +13,6 @@
 	<string name="unit">온도 단위</string>
 	<string name="i">인치 / 화씨</string>
 	<string name="m">미터법 / 섭씨</string>
-	<string name="request_restart">APP를 다시 시작한 후 적용되는 언어 설정이 이제 다시 시작됩니까?</string>
 	<string name="select_lang">언어 선택</string>
 	<string name="select_group">쿼리 범위 선택</string>
 	<string name="select_unit">온도 단위 선택</string>
@@ -31,4 +30,14 @@
 	<string name="lifestyle">라이프 스타일</string>
 	<string name="nowlocation">현재 위치</string>
 	<string name="exit_warning">종료하려면 뒤로 버튼을 다시 터치하십시오.</string>
+	<string name="select_date_text_style">날짜 표시 스타일 선택</string>
+	<string name="about">약</string>
+	<string name="datetextstyle">날짜 텍스트 스타일</string>
+	<string name="today">오늘</string>
+	<string name="tomorrow">내일</string>
+	<string name="the_day_after_tomorrow">내일 이후</string>
+	<string name="date_text_style_today">오늘 내일</string>
+	<string name="date_text_style_week">주 이름</string>
+	<string name="date_text_style_date">날짜</string>
+
 </resources>

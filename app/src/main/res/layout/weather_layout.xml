@@ -103,7 +103,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginStart="16dp"
-					android:layout_marginTop="16dp"
+					android:layout_marginTop="0dp"
 					android:background="@drawable/shape_background_gray_translate"
 					android:drawableLeft="@drawable/arrow_left_white"
 					android:gravity="center"
@@ -113,14 +113,14 @@
 					android:text="前一天"
 					android:textColor="@color/white"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent" />
+					app:layout_constraintTop_toTopOf="@+id/text_now_day" />
 				
 				<TextView
 					android:id="@+id/text_now_day"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginStart="8dp"
-					android:layout_marginTop="16dp"
+					android:layout_marginTop="24dp"
 					android:layout_marginEnd="8dp"
 					android:background="@drawable/shape_background_gray_translate"
 					android:padding="8dp"
@@ -134,7 +134,7 @@
 					android:id="@+id/text_tonextday"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="16dp"
+					android:layout_marginTop="0dp"
 					android:layout_marginEnd="16dp"
 					android:background="@drawable/shape_background_gray_translate"
 					android:drawableRight="@drawable/arrow_right_white"
@@ -145,7 +145,7 @@
 					android:text="后一天"
 					android:textColor="@color/white"
 					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintTop_toTopOf="parent" />
+					app:layout_constraintTop_toTopOf="@+id/text_now_day" />
 				
 				<android.support.constraint.ConstraintLayout
 					android:id="@+id/constraint_main_weather"

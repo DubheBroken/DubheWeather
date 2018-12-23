@@ -9,7 +9,7 @@
 	<string name="jp" translatable="false">日本語</string>
 	<string name="kr" translatable="false">한국어</string>
 	
-	<string name="app_name">Tianshu weather</string>
+	<string name="app_name">Dubhe Weather</string>
 	<string name="fl">Somatosensory temperature</string>
 	<string name="hum">Relative humidity</string>
 	<string name="pcpn">Precipitation</string>
@@ -23,11 +23,10 @@
 	<string name="unit">Temperature unit</string>
 	<string name="i">Inch / Fahrenheit </string>
 	<string name="m">Metric / Celsius </string>
-	<string name="request_restart">Language setting to take effect after restarting the APP, now restart?</string>
 	<string name="select_lang">Select language </string>
 	<string name="select_group">Select the scope of the query</string>
 	<string name="select_unit">Select temperature unit </string>
-	<string name="search_hint">Enter Chinese characters or Pinyin search</string>
+	<string name="search_hint">Enter city name to search</string>
 	<string name="hot_city">Hot City</string>
 	<string name="choose_city">Select City</string>
 	<string name="comf">Comfort</string>
@@ -41,4 +40,13 @@
 	<string name="lifestyle">Life Style</string>
 	<string name="nowlocation">Current Position</string>
 	<string name="exit_warning">Touch the back button again to exit</string>
+	<string name="select_date_text_style">Select date display style</string>
+	<string name="about">About</string>
+	<string name="datetextstyle">Date text style</string>
+	<string name="today">Today</string>
+	<string name="tomorrow">Tomorrow</string>
+	<string name="the_day_after_tomorrow">The day after tomorrow</string>
+	<string name="date_text_style_today">Today&amp;Tomorrow</string>
+	<string name="date_text_style_week">Week name</string>
+	<string name="date_text_style_date">Date</string>
 </resources>

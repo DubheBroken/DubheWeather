@@ -1,11 +1,9 @@
 package com.dubhe.broken.dubheweather.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -13,15 +11,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dubhe.broken.dubheweather.R;
 import com.dubhe.broken.dubheweather.application.AppData;
 import com.dubhe.broken.dubheweather.constant.ServiceInfo;
+
+import org.w3c.dom.Text;
 
 import java.util.Locale;
 
@@ -36,6 +32,7 @@ public class SettingActivity extends AppCompatActivity {
     private static final int MODE_GROUP = 0;
     private static final int MODE_LANG = 1;
     private static final int MODE_UNIT = 2;
+    private static final int MODE_DATE_STYLE = 3;
     private Context context = this;
     private TextView btnBackSetting;
     private TextView textSetting;
@@ -60,6 +57,16 @@ public class SettingActivity extends AppCompatActivity {
     private ConstraintLayout constraintSetting;
     private AlertDialog dialog;
     private AlertDialog dialogOk;
+    private TextView textSettingDatestyleIcon;
+    private ConstraintLayout constraintSettingAbout;
+    private TextView textSettingAboutIcon;
+    private TextView textSettingAboutTag;
+    private TextView textSettingAboutArrow;
+    private TextView textSettingDateStyleIcon;
+    private TextView textSettingDateStyleTag;
+    private TextView textSettingDateStyle;
+    private TextView textSettingDateStyleArrow;
+    private ConstraintLayout constraintSettingDateStyle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,21 +101,34 @@ public class SettingActivity extends AppCompatActivity {
         textSettingUnit = findViewById(R.id.text_setting_unit);
         textSettingUnitArrow = findViewById(R.id.text_setting_unit_arrow);
         constraintSettingUnit = findViewById(R.id.constraint_setting_unit);
+        textSettingAboutIcon = findViewById(R.id.text_setting_about_icon);
+        textSettingAboutTag = findViewById(R.id.text_setting_about_tag);
+        textSettingAboutArrow = findViewById(R.id.text_setting_about_arrow);
+        constraintSettingAbout = findViewById(R.id.constraint_setting_about);
+        textSettingDateStyleIcon = findViewById(R.id.text_setting_datestyle_icon);
+        textSettingDateStyleTag = findViewById(R.id.text_setting_datestyle_tag);
+        textSettingDateStyle = findViewById(R.id.text_setting_datestyle);
+        textSettingDateStyleArrow = findViewById(R.id.text_setting_datestyle_arrow);
+        constraintSettingDateStyle = findViewById(R.id.constraint_setting_datestyle);
         constraintSetting = findViewById(R.id.constraint_setting);
 
         textSettingGroupTag.setText(getResources().getString(R.string.group));
         textSettingLangTag.setText(getResources().getString(R.string.lang));
         textSettingUnitTag.setText(getResources().getString(R.string.unit));
+        textSettingAboutTag.setText(getResources().getString(R.string.about));
+        textSettingDateStyleTag.setText(getResources().getString(R.string.datetextstyle));
         textSetting.setText(getResources().getString(R.string.setting));
 
         textSettingGroup.setText(AppData.getSettingStr(context, AppData.getGroup()));
         textSettingLang.setText(AppData.getSettingStr(context, AppData.getLang()));
         textSettingUnit.setText(AppData.getSettingStr(context, AppData.getUnit()));
+        textSettingDateStyle.setText(AppData.getSettingStr(context, AppData.getDateTextStyle()));
 
         btnBackSetting.setOnClickListener(v -> finish());
         constraintSettingGroup.setOnClickListener(v -> showSelectDialog(MODE_GROUP));
         constraintSettingUnit.setOnClickListener(v -> showSelectDialog(MODE_UNIT));
         constraintSettingLang.setOnClickListener(v -> showSelectDialog(MODE_LANG));
+        constraintSettingDateStyle.setOnClickListener(v -> showSelectDialog(MODE_DATE_STYLE));
 
     }
 
@@ -134,6 +154,11 @@ public class SettingActivity extends AppCompatActivity {
                 ar = context.getResources().obtainTypedArray(R.array.unit);
                 items = getResources().getStringArray(R.array.unit);
                 title = getResources().getString(R.string.select_unit);
+                break;
+            case MODE_DATE_STYLE:
+                ar = context.getResources().obtainTypedArray(R.array.date_text_style);
+                items = getResources().getStringArray(R.array.date_text_style);
+                title = getResources().getString(R.string.select_date_text_style);
                 break;
         }
         String[] finalItems = items;
@@ -184,6 +209,10 @@ public class SettingActivity extends AppCompatActivity {
                                 case MODE_UNIT:
                                     textSettingUnit.setText(finalItems[which]);
                                     AppData.setUnit(AppData.getSettingCode(context, finalAr.getResourceId(which, -1)));
+                                    break;
+                                case MODE_DATE_STYLE:
+                                    textSettingDateStyle.setText(finalItems[which]);
+                                    AppData.setDateTextStyle(AppData.getSettingCode(context, finalAr.getResourceId(which, -1)));
                                     break;
                             }
                             dialog.cancel();

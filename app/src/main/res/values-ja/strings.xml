@@ -13,7 +13,6 @@
 	<string name="unit">温度単位</string>
 	<string name="i">インチ/華氏</string>
 	<string name="m">メートル/摂氏</string>
-	<string name="request_restart">APPを再起動した後に有効になる言語設定は、今再起動しますか？</string>
 	<string name="select_lang">言語を選択</string>
 	<string name="select_group">クエリの範囲を選択する</string>
 	<string name="select_unit">温度単位を選択</string>
@@ -31,4 +30,13 @@
 	<string name="lifestyle">ライフスタイル</string>
 	<string name="nowlocation">現在位置</string>
 	<string name="exit_warning">終了するには、もう一度戻るボタンをタップします。</string>
+	<string name="select_date_text_style">日付表示スタイルを選択</string>
+	<string name="about">約</string>
+	<string name="datetextstyle">日付のテキストスタイル</string>
+	<string name="today">今日</string>
+	<string name="tomorrow">明日</string>
+	<string name="the_day_after_tomorrow">明後日</string>
+	<string name="date_text_style_today">今日明日</string>
+	<string name="date_text_style_week">週の名前</string>
+	<string name="date_text_style_date">日付</string>
 </resources>

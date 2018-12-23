@@ -13,7 +13,6 @@
 	<string name="unit">溫度單位</string>
 	<string name="i">英制/華氏度</string>
 	<string name="m">公制/攝氏度</string>
-	<string name="request_restart">語言設定重啟APP後生效，現在重啟嗎？ </string>
 	<string name="select_lang">選擇語言</string>
 	<string name="select_group">選擇查詢範圍</string>
 	<string name="select_unit">選擇溫度單位</string>
@@ -39,5 +38,13 @@
 	<string name="lifestyle">生活指數</string>
 	<string name="nowlocation">當前位置</string>
 	<string name="exit_warning">再次觸摸返回鍵來退出</string>
-
+	<string name="select_date_text_style">選擇日期顯示風格</string>
+	<string name="about">關於</string>
+	<string name="datetextstyle">日期文字風格</string>
+	<string name="today">今天</string>
+	<string name="tomorrow">明天</string>
+	<string name="the_day_after_tomorrow">後天</string>
+	<string name="date_text_style_today">今天和明天</string>
+	<string name="date_text_style_week">星期</string>
+	<string name="date_text_style_date">日期</string>
 </resources>

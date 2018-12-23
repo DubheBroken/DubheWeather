@@ -278,7 +278,6 @@ public class WeatherActivity extends AppCompatActivity {
 
         textTonextday.setOnClickListener(v -> initWeather(now_mode + 1, sparseArray_future));
 
-
         textTolastday.setOnClickListener(v ->
         {
             if (now_mode == 1) {
