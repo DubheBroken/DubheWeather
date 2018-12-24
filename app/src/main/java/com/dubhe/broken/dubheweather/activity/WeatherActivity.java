@@ -28,9 +28,9 @@ import com.dubhe.broken.dubheweather.utils.ResHelper;
 import com.dubhe.broken.dubheweather.utils.ToastUtils;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -59,6 +59,9 @@ public class WeatherActivity extends AppCompatActivity {
     private static final int ONEDAY_LATER_MODE = 1;
     private static final int TOWDAY_LATER_MODE = 2;
     private Context context = this;
+    private final String DATE_STYLE_DATE = "date_text_style_date";
+    private final String DATE_STYLE_TODAY = "date_text_style_today";
+    private final String DATE_STYLE_WEEK = "date_text_style_week";
     private TextView btnChoosecity;
     private TextView textCityname;
     private TextView btnSetting;
@@ -168,11 +171,11 @@ public class WeatherActivity extends AppCompatActivity {
             }, 2000);// 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
         } else {
             finish();
-            System.exit(0);
         }
     }
 
     private void initView() {
+        AppData.settingLanguage(context);
         btnChoosecity = findViewById(R.id.btn_choosecity);
         textCityname = findViewById(R.id.text_cityname);
         btnSetting = findViewById(R.id.btn_setting);
@@ -277,7 +280,6 @@ public class WeatherActivity extends AppCompatActivity {
         textTolastday.setVisibility(View.INVISIBLE);
 
         textTonextday.setOnClickListener(v -> initWeather(now_mode + 1, sparseArray_future));
-
         textTolastday.setOnClickListener(v ->
         {
             if (now_mode == 1) {
@@ -289,7 +291,7 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     /**
-     * 转换时间字符串格式
+     * 转换时间字符串格式为 月-日
      *
      * @param datestr 服务器传来的时间字符串
      * @return 转换后的时间字符串
@@ -308,22 +310,126 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     /**
+     * 转换时间字符串格式为 星期几
+     *
+     * @return 转换后的时间字符串
+     */
+    public String getWeek(Date date) {
+        String[] weeks = {getResources().getString(R.string.xqt),
+                getResources().getString(R.string.xqy),
+                getResources().getString(R.string.xqe),
+                getResources().getString(R.string.xqsan),
+                getResources().getString(R.string.xqsi),
+                getResources().getString(R.string.xqw),
+                getResources().getString(R.string.xql)};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int week_index = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (week_index < 0) {
+            week_index = 0;
+        }
+        return weeks[week_index];
+    }
+
+    /**
+     * 更改顶部切换第几天按钮的文字，如果传入空则隐藏按钮
+     *
+     * @param str1 第一个按钮文字
+     * @param str2 第二个按钮文字
+     * @param str3 第三个按钮文字
+     */
+    private void initDateStyle(String str1, String str2, String str3) {
+        if (str1 == null || "".equals(str1)) {
+            textTolastday.setVisibility(View.INVISIBLE);
+        } else {
+            textTolastday.setVisibility(View.VISIBLE);
+            textTolastday.setText(str1);
+        }
+
+        if (str2 == null || "".equals(str2)) {
+            textNowDay.setVisibility(View.INVISIBLE);
+        } else {
+            textNowDay.setVisibility(View.VISIBLE);
+            textNowDay.setText(str2);
+        }
+
+        if (str3 == null || "".equals(str3)) {
+            textTonextday.setVisibility(View.INVISIBLE);
+        } else {
+            textTonextday.setVisibility(View.VISIBLE);
+            textTonextday.setText(str3);
+        }
+    }
+
+    /**
+     * 改变顶部按钮状态
+     */
+    private void changeTopButton() {
+        Date newDate2 = new Date(new Date().getTime() + (long) 24 * 60 * 60 * 1000);
+        Date newDate33 = new Date(new Date().getTime() + (long) 24 * 60 * 60 * 2000);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd");
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+        String dateOk = simpleDateFormat.format(newDate2);
+        String dateOk3 = simpleDateFormat.format(newDate33);
+        switch (now_mode) {
+            case TODAY_MODE:
+                switch (AppData.getDateTextStyle()) {
+                    case DATE_STYLE_DATE:
+                        initDateStyle(null, formatDateStr(null), dateOk);
+                        break;
+                    case DATE_STYLE_TODAY:
+                        initDateStyle(null, getResources().getString(R.string.today), getResources().getString(R.string.tomorrow));
+                        break;
+                    case DATE_STYLE_WEEK:
+                        initDateStyle(null, getWeek(new Date()), getWeek(newDate2));
+                        break;
+                }
+                break;
+            case ONEDAY_LATER_MODE:
+                switch (AppData.getDateTextStyle()) {
+                    case DATE_STYLE_DATE:
+                        initDateStyle(formatDateStr(null), dateOk, dateOk3);
+                        break;
+                    case DATE_STYLE_TODAY:
+                        initDateStyle(getResources().getString(R.string.today),
+                                getResources().getString(R.string.tomorrow),
+                                getResources().getString(R.string.the_day_after_tomorrow));
+                        break;
+                    case DATE_STYLE_WEEK:
+                        initDateStyle(getWeek(new Date()), getWeek(newDate2), getWeek(newDate33));
+                        break;
+                }
+                break;
+            case TOWDAY_LATER_MODE:
+                switch (AppData.getDateTextStyle()) {
+                    case DATE_STYLE_DATE:
+                        initDateStyle(dateOk, dateOk3, null);
+                        break;
+                    case DATE_STYLE_TODAY:
+                        initDateStyle(
+                                getResources().getString(R.string.tomorrow),
+                                getResources().getString(R.string.the_day_after_tomorrow)
+                                , null);
+                        break;
+                    case DATE_STYLE_WEEK:
+                        initDateStyle(getWeek(newDate2), getWeek(newDate33), null);
+                        break;
+                }
+                break;
+        }
+    }
+
+    /**
      * 初始化天气数据
      *
      * @param s 服务器传来的天气数据
      */
     private void initWeather(int mode, SparseArray s) {
         now_mode = mode;
+        changeTopButton();
         switch (mode) {
             case TODAY_MODE:
                 //显示今日天气
-                textTolastday.setVisibility(View.INVISIBLE);
-                textTonextday.setVisibility(View.VISIBLE);
-                textNowDay.setText(formatDateStr(null));
-                Date newDate2 = new Date(new Date().getTime() + (long) 24 * 60 * 60 * 1000);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd");
-                String dateOk = simpleDateFormat.format(newDate2);
-                textTonextday.setText(dateOk);
                 Weather weather = JSON.parseObject(s.get(1).toString(), Weather.class);
                 if (weather != null) {
                     List<Weather.HeWeather6Bean> list_heWeather6Bean = weather.getHeWeather6();
@@ -340,7 +446,7 @@ public class WeatherActivity extends AppCompatActivity {
                         textHum.setText(nowBean.getHum());
                         textPcpn.setText(nowBean.getPcpn());
                         textVis.setText(nowBean.getVis() + AppData.getUnitStr().get(AppData.VISIBILITY));//能见度
-                        initIcon(nowBean.getCond_code());
+                        initBack(nowBean.getCond_code());
                     } else {
                         Log.e(TAG, ServiceInfo.Status.getMessage(list_heWeather6Bean.get(0).getStatus()));
                     }
@@ -349,12 +455,6 @@ public class WeatherActivity extends AppCompatActivity {
             case ONEDAY_LATER_MODE:
             case TOWDAY_LATER_MODE:
                 //显示未来天气
-                textTolastday.setVisibility(View.VISIBLE);
-                if (mode == TOWDAY_LATER_MODE) {
-                    textTonextday.setVisibility(View.INVISIBLE);
-                } else {
-                    textTonextday.setVisibility(View.VISIBLE);
-                }
                 FutureWeather futureWeather = JSON.parseObject(s.get(1).toString(), FutureWeather.class);
                 if (futureWeather != null) {
                     List<FutureWeather.HeWeather6Bean> list_fuheWeather6Bean = futureWeather.getHeWeather6();
@@ -372,21 +472,7 @@ public class WeatherActivity extends AppCompatActivity {
                         textHum.setText(dailyForecastBeanList.get(mode).getHum());
                         textPcpn.setText(dailyForecastBeanList.get(mode).getPcpn());
                         textVis.setText(dailyForecastBeanList.get(mode).getVis() + AppData.getUnitStr().get(AppData.VISIBILITY));//能见度
-                        textNowDay.setText(formatDateStr(dailyForecastBeanList.get(mode).getDate()));
-                        Date newDate3 = null;
-                        Date newDate4 = null;
-                        try {
-                            newDate3 = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(dailyForecastBeanList.get(mode).getDate()).getTime() + (long) 24 * 60 * 60 * 1000);
-                            newDate4 = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(dailyForecastBeanList.get(mode).getDate()).getTime() - (long) 24 * 60 * 60 * 1000);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
-                        String nextDay = sdf.format(newDate3);
-                        String lastDay = sdf.format(newDate4);
-                        textTonextday.setText(nextDay);
-                        textTolastday.setText(lastDay);
-                        initIcon(dailyForecastBeanList.get(mode).getCond_code_d());
+                        initBack(dailyForecastBeanList.get(mode).getCond_code_d());
                     } else {
                         Log.e(TAG, ServiceInfo.Status.getMessage(list_fuheWeather6Bean.get(mode).getStatus()));
                     }
@@ -396,7 +482,12 @@ public class WeatherActivity extends AppCompatActivity {
 
     }
 
-    private void initIcon(String code) {
+    /**
+     * 初始化天气背景图
+     *
+     * @param code 天气状态代码
+     */
+    private void initBack(String code) {
         String code_str;
         switch (code) {
             case "200":

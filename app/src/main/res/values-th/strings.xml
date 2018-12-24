@@ -39,4 +39,11 @@
 	<string name="date_text_style_today">วันนี้พรุ่งนี้</string>
 	<string name="date_text_style_week">ชื่อสัปดาห์</string>
 	<string name="date_text_style_date">วันที่</string>
+	<string name="xqt">วันอาทิตย์</string>
+	<string name="xqy">วันจันทร์</string>
+	<string name="xqe">วันอังคาร</string>
+	<string name="xqsan">วันพุธ</string>
+	<string name="xqsi">วันพฤหัสบดี</string>
+	<string name="xqw">วันศุกร์</string>
+	<string name="xql">วันเสาร์</string>
 </resources>

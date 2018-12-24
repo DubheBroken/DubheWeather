@@ -39,4 +39,11 @@
 	<string name="date_text_style_today">今日明日</string>
 	<string name="date_text_style_week">週の名前</string>
 	<string name="date_text_style_date">日付</string>
+	<string name="xqt">日曜日</string>
+	<string name="xqy">月曜日</string>
+	<string name="xqe">火曜日</string>
+	<string name="xqsan">水曜日</string>
+	<string name="xqsi">木曜日</string>
+	<string name="xqw">金曜日</string>
+	<string name="xql">土曜日</string>
 </resources>

@@ -39,5 +39,11 @@
 	<string name="date_text_style_today">oggi domani</string>
 	<string name="date_text_style_week">Nome della settimana</string>
 	<string name="date_text_style_date">Data</string>
-
+	<string name="xqt">Domenica</string>
+	<string name="xqy">Lunedi</string>
+	<string name="xqe">martedì</string>
+	<string name="xqsan">mercoledì</string>
+	<string name="xqsi">giovedi</string>
+	<string name="xqw">Venerdì</string>
+	<string name="xql">Sabato</string>
 </resources>

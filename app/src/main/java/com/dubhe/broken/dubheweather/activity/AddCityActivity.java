@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.dubhe.broken.dubheweather.R;
+import com.dubhe.broken.dubheweather.application.AppData;
 import com.dubhe.broken.dubheweather.constant.ServiceInfo;
 import com.dubhe.broken.dubheweather.utils.HttpUtils;
 import com.dubhe.broken.dubheweather.utils.ToastUtils;
@@ -68,6 +69,7 @@ public class AddCityActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        AppData.settingLanguage(context);
         btnBackAddcity = findViewById(R.id.btn_back_addcity);
         textAddcity = findViewById(R.id.text_addcity);
         actvAddcity = findViewById(R.id.actv_addcity);
@@ -199,6 +201,7 @@ public class AddCityActivity extends AppCompatActivity {
 
             }
 
+            @SuppressLint("LongLogTag")
             @Override
             public void onNext(SparseArray s) {
                 switch ((String) s.get(0)) {

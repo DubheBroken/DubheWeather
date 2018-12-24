@@ -39,5 +39,11 @@
 	<string name="date_text_style_today">сегодня завтра</string>
 	<string name="date_text_style_week">Название недели</string>
 	<string name="date_text_style_date">Дата</string>
-
+	<string name="xqt">Воскресенье</string>
+	<string name="xqy">понедельник</string>
+	<string name="xqe">вторник</string>
+	<string name="xqsan">среда</string>
+	<string name="xqsi">Четверг</string>
+	<string name="xqw">пятница</string>
+	<string name="xql">суббота</string>
 </resources>

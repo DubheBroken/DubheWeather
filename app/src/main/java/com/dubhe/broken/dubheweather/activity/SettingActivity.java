@@ -81,6 +81,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        AppData.settingLanguage(context);
         btnBackSetting = findViewById(R.id.btn_back_setting);
         textSetting = findViewById(R.id.text_setting);
         constraintSettingToolbar = findViewById(R.id.constraint_setting_toolbar);
@@ -174,36 +175,6 @@ public class SettingActivity extends AppCompatActivity {
                                 case MODE_LANG:
                                     textSettingLang.setText(finalItems[which]);
                                     AppData.setLang(AppData.getSettingCode(context, finalAr.getResourceId(which, -1)));
-                                    Resources resources = context.getResources();
-                                    DisplayMetrics dm = resources.getDisplayMetrics();
-                                    Configuration config = resources.getConfiguration();
-                                    switch (finalItems[which]) {
-                                        case ServiceInfo.Language.CN:
-                                            config.locale = Locale.SIMPLIFIED_CHINESE;
-                                            break;
-                                        case ServiceInfo.Language.HK:
-                                            config.locale = Locale.TRADITIONAL_CHINESE;
-                                            break;
-                                        case ServiceInfo.Language.EN:
-                                            config.locale = Locale.ENGLISH;
-                                            break;
-                                        case ServiceInfo.Language.DE:
-                                            config.locale = Locale.GERMAN;
-                                            break;
-                                        case ServiceInfo.Language.FR:
-                                            config.locale = Locale.FRENCH;
-                                            break;
-                                        case ServiceInfo.Language.IT:
-                                            config.locale = Locale.ITALIAN;
-                                            break;
-                                        case ServiceInfo.Language.JP:
-                                            config.locale = Locale.JAPANESE;
-                                            break;
-                                        case ServiceInfo.Language.KR:
-                                            config.locale = Locale.KOREAN;
-                                            break;
-                                    }
-                                    resources.updateConfiguration(config, dm);
                                     initView();
                                     break;
                                 case MODE_UNIT:

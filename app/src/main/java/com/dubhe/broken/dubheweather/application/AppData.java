@@ -3,6 +3,9 @@ package com.dubhe.broken.dubheweather.application;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
 import com.dubhe.broken.dubheweather.R;
 import com.dubhe.broken.dubheweather.constant.ServiceInfo;
@@ -57,6 +60,42 @@ public class AppData extends Application {
         AppData.group = settings.getString(ServiceInfo.HotCity.GROUP, ServiceInfo.HotCity.GROUP_ALL);
         AppData.unit = settings.getString(ServiceInfo.NowWeather.UNIT, "m");
         AppData.dateTextStyle = settings.getString(DATE_TEXT_STYLE, getSettingCode(this, R.string.date_text_style_date));
+    }
+
+    /**
+     * 设置程序语言
+     */
+    public static void settingLanguage(Context context) {
+        Resources resources = context.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        switch (getSettingStr(context, AppData.lang)) {
+            case ServiceInfo.Language.CN:
+                config.locale = Locale.SIMPLIFIED_CHINESE;
+                break;
+            case ServiceInfo.Language.HK:
+                config.locale = Locale.TRADITIONAL_CHINESE;
+                break;
+            case ServiceInfo.Language.EN:
+                config.locale = Locale.ENGLISH;
+                break;
+            case ServiceInfo.Language.DE:
+                config.locale = Locale.GERMAN;
+                break;
+            case ServiceInfo.Language.FR:
+                config.locale = Locale.FRENCH;
+                break;
+            case ServiceInfo.Language.IT:
+                config.locale = Locale.ITALIAN;
+                break;
+            case ServiceInfo.Language.JP:
+                config.locale = Locale.JAPANESE;
+                break;
+            case ServiceInfo.Language.KR:
+                config.locale = Locale.KOREAN;
+                break;
+        }
+        resources.updateConfiguration(config, dm);
     }
 
     public static String getDateTextStyle() {

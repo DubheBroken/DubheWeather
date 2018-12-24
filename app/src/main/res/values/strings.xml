@@ -49,4 +49,11 @@
 	<string name="date_text_style_today">Today&amp;Tomorrow</string>
 	<string name="date_text_style_week">Week name</string>
 	<string name="date_text_style_date">Date</string>
+	<string name="xqt">Sunday</string>
+	<string name="xqy">Monday</string>
+	<string name="xqe">Tuesday</string>
+	<string name="xqsan">Wednesday</string>
+	<string name="xqsi">Thursday</string>
+	<string name="xqw">Friday</string>
+	<string name="xql">Saturday</string>
 </resources>

@@ -39,5 +39,11 @@
 	<string name="date_text_style_today">오늘 내일</string>
 	<string name="date_text_style_week">주 이름</string>
 	<string name="date_text_style_date">날짜</string>
-
+	<string name="xqt">일요일</string>
+	<string name="xqy">월요일</string>
+	<string name="xqe">화요일</string>
+	<string name="xqsan">수요일</string>
+	<string name="xqsi">목요일</string>
+	<string name="xqw">금요일</string>
+	<string name="xql">토요일</string>
 </resources>

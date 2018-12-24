@@ -39,4 +39,11 @@
 	<string name="date_text_style_today">आज कल</string>
 	<string name="date_text_style_week">सप्ताह का नाम</string>
 	<string name="date_text_style_date">दिनांक</string>
+	<string name="xqt">रविवार</string>
+	<string name="xqy">सोमवार</string>
+	<string name="xqe">मंगलवार</string>
+	<string name="xqsan">बुधवार</string>
+	<string name="xqsi">गुरूवार</string>
+	<string name="xqw">शुक्रवार</string>
+	<string name="xql">शनिवार</string>
 </resources>

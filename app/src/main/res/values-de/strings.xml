@@ -39,5 +39,11 @@
 	<string name="date_text_style_today">heute Morgen</string>
 	<string name="date_text_style_week">Name der Woche</string>
 	<string name="date_text_style_date">Datum</string>
-
+	<string name="xqt">Sonntag</string>
+	<string name="xqy">Montag</string>
+	<string name="xqe">Dienstag</string>
+	<string name="xqsan">Mittwoch</string>
+	<string name="xqsi">Donnerstag</string>
+	<string name="xqw">Freitag</string>
+	<string name="xql">Samstag</string>
 </resources>
