@@ -12,7 +12,9 @@
 		android:id="@+id/constraint_setting_toolbar"
 		android:layout_width="match_parent"
 		android:layout_height="@dimen/toolbar_high"
-		android:background="@color/colorPrimary">
+		android:background="@color/colorPrimary"
+		android:elevation="8dp"
+		>
 		
 		<TextView
 			android:id="@+id/btn_back_setting"

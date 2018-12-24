@@ -291,6 +291,83 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     /**
+     * 改变生活指数显示状态
+     *
+     * @param status 状态
+     */
+    private void changeLifeStyleStatus(boolean status) {
+        if (status) {
+            textLifestyleTag.setText(getResources().getString(R.string.lifestyle));
+            cardComf.setVisibility(View.VISIBLE);
+            textComfTag.setVisibility(View.VISIBLE);
+            line4.setVisibility(View.VISIBLE);
+            textComf.setVisibility(View.VISIBLE);
+            cardCw.setVisibility(View.VISIBLE);
+            textCwTag.setVisibility(View.VISIBLE);
+            line5.setVisibility(View.VISIBLE);
+            textCw.setVisibility(View.VISIBLE);
+            cardDrsg.setVisibility(View.VISIBLE);
+            textDrsgTag.setVisibility(View.VISIBLE);
+            line6.setVisibility(View.VISIBLE);
+            textDrsg.setVisibility(View.VISIBLE);
+            cardFlu.setVisibility(View.VISIBLE);
+            textFluTag.setVisibility(View.VISIBLE);
+            line7.setVisibility(View.VISIBLE);
+            textFlu.setVisibility(View.VISIBLE);
+            cardSport.setVisibility(View.VISIBLE);
+            textSportTag.setVisibility(View.VISIBLE);
+            line8.setVisibility(View.VISIBLE);
+            textSport.setVisibility(View.VISIBLE);
+            cardTrav.setVisibility(View.VISIBLE);
+            textTravTag.setVisibility(View.VISIBLE);
+            line9.setVisibility(View.VISIBLE);
+            textTrav.setVisibility(View.VISIBLE);
+            cardUv.setVisibility(View.VISIBLE);
+            textUvTag.setVisibility(View.VISIBLE);
+            line10.setVisibility(View.VISIBLE);
+            textUv.setVisibility(View.VISIBLE);
+            cardAir.setVisibility(View.VISIBLE);
+            textAirTag.setVisibility(View.VISIBLE);
+            line11.setVisibility(View.VISIBLE);
+            textAir.setVisibility(View.VISIBLE);
+        } else {
+            textLifestyleTag.setText(getResources().getString(R.string.nolifestyle));
+            cardComf.setVisibility(View.GONE);
+            textComfTag.setVisibility(View.GONE);
+            line4.setVisibility(View.GONE);
+            textComf.setVisibility(View.GONE);
+            cardCw.setVisibility(View.GONE);
+            textCwTag.setVisibility(View.GONE);
+            line5.setVisibility(View.GONE);
+            textCw.setVisibility(View.GONE);
+            cardDrsg.setVisibility(View.GONE);
+            textDrsgTag.setVisibility(View.GONE);
+            line6.setVisibility(View.GONE);
+            textDrsg.setVisibility(View.GONE);
+            cardFlu.setVisibility(View.GONE);
+            textFluTag.setVisibility(View.GONE);
+            line7.setVisibility(View.GONE);
+            textFlu.setVisibility(View.GONE);
+            cardSport.setVisibility(View.GONE);
+            textSportTag.setVisibility(View.GONE);
+            line8.setVisibility(View.GONE);
+            textSport.setVisibility(View.GONE);
+            cardTrav.setVisibility(View.GONE);
+            textTravTag.setVisibility(View.GONE);
+            line9.setVisibility(View.GONE);
+            textTrav.setVisibility(View.GONE);
+            cardUv.setVisibility(View.GONE);
+            textUvTag.setVisibility(View.GONE);
+            line10.setVisibility(View.GONE);
+            textUv.setVisibility(View.GONE);
+            cardAir.setVisibility(View.GONE);
+            textAirTag.setVisibility(View.GONE);
+            line11.setVisibility(View.GONE);
+            textAir.setVisibility(View.GONE);
+        }
+    }
+
+    /**
      * 转换时间字符串格式为 月-日
      *
      * @param datestr 服务器传来的时间字符串
@@ -430,6 +507,7 @@ public class WeatherActivity extends AppCompatActivity {
         switch (mode) {
             case TODAY_MODE:
                 //显示今日天气
+                changeLifeStyleStatus(true);
                 Weather weather = JSON.parseObject(s.get(1).toString(), Weather.class);
                 if (weather != null) {
                     List<Weather.HeWeather6Bean> list_heWeather6Bean = weather.getHeWeather6();
@@ -455,6 +533,7 @@ public class WeatherActivity extends AppCompatActivity {
             case ONEDAY_LATER_MODE:
             case TOWDAY_LATER_MODE:
                 //显示未来天气
+                changeLifeStyleStatus(false);
                 FutureWeather futureWeather = JSON.parseObject(s.get(1).toString(), FutureWeather.class);
                 if (futureWeather != null) {
                     List<FutureWeather.HeWeather6Bean> list_fuheWeather6Bean = futureWeather.getHeWeather6();

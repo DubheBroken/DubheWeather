@@ -54,4 +54,5 @@
 	<string name="xqsi">星期四</string>
 	<string name="xqw">星期五</string>
 	<string name="xql">星期六</string>
+	<string name="nolifestyle">抱歉，生活指数无法预报</string>
 </resources>

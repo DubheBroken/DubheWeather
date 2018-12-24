@@ -46,4 +46,5 @@
 	<string name="xqsi">Четверг</string>
 	<string name="xqw">пятница</string>
 	<string name="xql">суббота</string>
+	<string name="nolifestyle">Извините, стиль жизни не может быть предсказан.</string>
 </resources>

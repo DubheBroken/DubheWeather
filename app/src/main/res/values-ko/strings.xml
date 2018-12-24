@@ -46,4 +46,5 @@
 	<string name="xqsi">목요일</string>
 	<string name="xqw">금요일</string>
 	<string name="xql">토요일</string>
+	<string name="nolifestyle">죄송합니다. 라이프 스타일을 예측할 수 없습니다.</string>
 </resources>

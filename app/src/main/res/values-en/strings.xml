@@ -45,7 +45,7 @@
 	<string name="datetextstyle">Date text style</string>
 	<string name="today">Today</string>
 	<string name="tomorrow">Tomorrow</string>
-	<string name="the_day_after_tomorrow">The day after tomorrow</string>
+	<string name="the_day_after_tomorrow">Two days later</string>
 	<string name="date_text_style_today">Today&amp;Tomorrow</string>
 	<string name="date_text_style_week">Week name</string>
 	<string name="date_text_style_date">Date</string>
@@ -56,4 +56,5 @@
 	<string name="xqsi">Thursday</string>
 	<string name="xqw">Friday</string>
 	<string name="xql">Saturday</string>
+	<string name="nolifestyle">Sorry, the life style cannot be predicted.</string>
 </resources>

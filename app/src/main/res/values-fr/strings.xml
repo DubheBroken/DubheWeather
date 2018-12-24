@@ -46,4 +46,5 @@
 	<string name="xqsi">Jeudi</string>
 	<string name="xqw">Vendredi</string>
 	<string name="xql">samedi</string>
+	<string name="nolifestyle">Désolé, le style de vie ne peut être prédit.</string>
 </resources>

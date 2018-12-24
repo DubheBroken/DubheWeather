@@ -38,6 +38,7 @@
 	<string name="uv">UV intensity</string>
 	<string name="air">Air Pollution Diffusion Conditions</string>
 	<string name="lifestyle">Life Style</string>
+	<string name="nolifestyle">Sorry, the life style cannot be predicted.</string>
 	<string name="nowlocation">Current Position</string>
 	<string name="exit_warning">Touch the back button again to exit</string>
 	<string name="select_date_text_style">Select date display style</string>
@@ -45,7 +46,7 @@
 	<string name="datetextstyle">Date text style</string>
 	<string name="today">Today</string>
 	<string name="tomorrow">Tomorrow</string>
-	<string name="the_day_after_tomorrow">The day after tomorrow</string>
+	<string name="the_day_after_tomorrow">Two days later</string>
 	<string name="date_text_style_today">Today&amp;Tomorrow</string>
 	<string name="date_text_style_week">Week name</string>
 	<string name="date_text_style_date">Date</string>

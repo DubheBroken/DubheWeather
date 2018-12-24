@@ -46,4 +46,5 @@
 	<string name="xqsi">วันพฤหัสบดี</string>
 	<string name="xqw">วันศุกร์</string>
 	<string name="xql">วันเสาร์</string>
+	<string name="nolifestyle">ขออภัยไม่สามารถคาดเดาวิถีชีวิตได้</string>
 </resources>

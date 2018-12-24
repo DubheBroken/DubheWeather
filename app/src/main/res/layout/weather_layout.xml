@@ -12,7 +12,9 @@
 		android:id="@+id/constraint_weather_toolbar"
 		android:layout_width="match_parent"
 		android:layout_height="@dimen/toolbar_high"
-		android:background="@color/colorPrimary">
+		android:background="@color/colorPrimary"
+		android:elevation="4dp"
+		>
 		
 		<TextView
 			android:id="@+id/btn_choosecity"
@@ -81,8 +83,8 @@
 		android:layout_height="0dp"
 		android:layout_margin="0dp"
 		android:orientation="vertical"
-		android:scrollbars="none"
 		android:overScrollMode="never"
+		android:scrollbars="none"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +98,9 @@
 				android:id="@+id/constraint_tmp_weather"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:background="@color/gray">
+				android:background="@color/gray"
+				android:elevation="8dp"
+				>
 				
 				<TextView
 					android:id="@+id/text_tolastday"
@@ -123,7 +127,7 @@
 					android:layout_marginTop="24dp"
 					android:layout_marginEnd="8dp"
 					android:background="@drawable/shape_background_gray_translate"
-					android:padding="8dp"
+					android:padding="7dp"
 					android:text="现在"
 					android:textColor="@color/white"
 					app:layout_constraintEnd_toEndOf="parent"
@@ -588,14 +592,14 @@
 							android:id="@+id/text_drsg"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
-							android:layout_marginTop="8dp"
-							android:layout_marginBottom="8dp"
 							android:layout_marginStart="0dp"
+							android:layout_marginTop="8dp"
 							android:layout_marginEnd="0dp"
+							android:layout_marginBottom="8dp"
 							android:text="穿衣建议文字"
 							app:layout_constraintBottom_toBottomOf="parent"
-							app:layout_constraintStart_toStartOf="@+id/line6"
 							app:layout_constraintEnd_toEndOf="@+id/line6"
+							app:layout_constraintStart_toStartOf="@+id/line6"
 							app:layout_constraintTop_toBottomOf="@+id/line6" />
 					</android.support.constraint.ConstraintLayout>
 				</android.support.v7.widget.CardView>
@@ -644,9 +648,9 @@
 							android:id="@+id/text_flu"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
+							android:layout_marginStart="0dp"
 							android:layout_marginTop="8dp"
 							android:layout_marginEnd="0dp"
-							android:layout_marginStart="0dp"
 							android:layout_marginBottom="8dp"
 							android:text="感冒指数文字"
 							app:layout_constraintBottom_toBottomOf="parent"
@@ -700,9 +704,9 @@
 							android:id="@+id/text_sport"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
+							android:layout_marginStart="0dp"
 							android:layout_marginTop="8dp"
 							android:layout_marginEnd="0dp"
-							android:layout_marginStart="0dp"
 							android:layout_marginBottom="8dp"
 							android:text="运动指数文字"
 							app:layout_constraintBottom_toBottomOf="parent"
@@ -756,9 +760,9 @@
 							android:id="@+id/text_trav"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
+							android:layout_marginStart="0dp"
 							android:layout_marginTop="8dp"
 							android:layout_marginEnd="0dp"
-							android:layout_marginStart="0dp"
 							android:layout_marginBottom="8dp"
 							android:text="旅游建议文字"
 							app:layout_constraintBottom_toBottomOf="parent"
@@ -812,14 +816,14 @@
 							android:id="@+id/text_uv"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
-							android:layout_marginTop="8dp"
-							android:layout_marginBottom="8dp"
 							android:layout_marginStart="0dp"
+							android:layout_marginTop="8dp"
 							android:layout_marginEnd="0dp"
+							android:layout_marginBottom="8dp"
 							android:text="紫外线强度文字"
 							app:layout_constraintBottom_toBottomOf="parent"
-							app:layout_constraintStart_toStartOf="@+id/line10"
 							app:layout_constraintEnd_toEndOf="@+id/line10"
+							app:layout_constraintStart_toStartOf="@+id/line10"
 							app:layout_constraintTop_toBottomOf="@+id/line10" />
 					</android.support.constraint.ConstraintLayout>
 				</android.support.v7.widget.CardView>
@@ -835,9 +839,9 @@
 					android:layout_marginBottom="16dp"
 					app:cardCornerRadius="10dp"
 					app:cardElevation="2dp"
+					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintTop_toBottomOf="@+id/card_uv">
 					
 					<android.support.constraint.ConstraintLayout
@@ -870,10 +874,10 @@
 							android:id="@+id/text_air"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
-							android:layout_marginTop="8dp"
-							android:layout_marginBottom="8dp"
 							android:layout_marginStart="0dp"
+							android:layout_marginTop="8dp"
 							android:layout_marginEnd="0dp"
+							android:layout_marginBottom="8dp"
 							android:text="空气污染扩散条件指数文字"
 							app:layout_constraintBottom_toBottomOf="parent"
 							app:layout_constraintEnd_toEndOf="@+id/line11"
