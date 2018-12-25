@@ -13,7 +13,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="@dimen/toolbar_high"
 		android:background="@color/colorPrimary"
-		android:elevation="4dp"
+		android:elevation="16dp"
 		>
 		
 		<TextView

@@ -593,9 +593,10 @@ public class WeatherActivity extends AppCompatActivity {
                 break;
             case "300":
             case "305":
+            case "306":
             case "309":
             case "314":
-                code_str = "305";
+                code_str = "306";
                 break;
             case "301":
             case "307":
