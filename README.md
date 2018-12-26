@@ -1,8 +1,11 @@
-# DubheWeather  
+# DubheWeather
 
 Weather APP based on the HeWeather API. Support multi-language, English formula temperature units and cities around the world.  
-![查看简体中文Readme文档](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_cn.md)  
-![查看繁体中文Readme文檔](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_tw.md)  
+
+[查看简体中文Readme文档](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_cn.md)  
+
+[查看繁体中文Readme文檔](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_tw.md)  
+
 ---------------------------------------
 ## Interface Preview
 ![Main interface](https://github.com/DubheBroken/DubheWeather/blob/master/readme_image/Screenshot_main_en.jpg)
@@ -37,6 +40,6 @@ Life style information is provided by the Windy Weather API, which only supports
 
 ---------------------------------------
 ## Special thanks  
-Thanks to the API interface provided by ![HeWeather](http://www.heweather.com).
+Thanks to the API interface provided by [HeWeather](http://www.heweather.com).
 
 ---------------------------------------
