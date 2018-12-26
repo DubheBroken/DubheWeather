@@ -1,7 +1,7 @@
 # 天樞天氣
-基於和風天氣API的天氣APP。支持多國語言、英式公式溫度單位和世界各地城市。
-![查看简体中文Readme文档](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_tw.md)
-![View English Readme Document](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_cn.md)
+基於和風天氣API的天氣APP。支持多國語言、英式公式溫度單位和世界各地城市。  
+[查看简体中文Readme文档](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_tw.md)  
+[View English Readme Document](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_cn.md)  
 
 ---------------------------------------
 ## 界面預覽
@@ -22,10 +22,10 @@ lingua italiana
 
 ---------------------------------------
 ## 切換城市
-觸摸主界面左上角的城市圖標進入城市選擇界面進行城市選擇，你可以使用下列任意一種方式選擇城市：
-①直接觸摸列表中的城市名稱
-②在輸入框中輸入城市名稱（支持拼音）再點擊搜索候選
-③觸摸“當前位置”按鈕，將會根據IP地址自動判斷城市
+觸摸主界面左上角的城市圖標進入城市選擇界面進行城市選擇，你可以使用下列任意一種方式選擇城市：  
+①直接觸摸列表中的城市名稱  
+②在輸入框中輸入城市名稱（支持拼音）再觸摸搜索候選  
+③觸摸“當前位置”按鈕，將會根據IP地址自動判斷城市  
 
 ---------------------------------------
 ## 查看未來天氣
@@ -37,6 +37,6 @@ lingua italiana
 
 ---------------------------------------
 ## 特別鳴謝
-感謝![和風天氣](www.heweather.com)提供的API接口。
+感謝[和風天氣](www.heweather.com)提供的API接口。
 
 ---------------------------------------
