@@ -1,12 +1,24 @@
 # 天枢天气  
-基于和风天气API的天气APP。支持多国语言、英式公式温度单位和世界各地城市。
+基于和风天气API的天气APP。支持多国语言、英式公式温度单位和世界各地城市。  
+![查看繁体中文Readme文檔](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_tw.md)  
+![View English Readme Document](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_cn.md)  
 
 ---------------------------------------
 ## 界面预览
-![主界面](https://github.com/DubheBroken/DubheWeather/blob/master/readme_image/Screenshot_20181226-154315.jpg)
+![主界面](https://github.com/DubheBroken/DubheWeather/blob/master/readme_image/Screenshot_main_cn.jpg)
 ---------------------------------------
 ## 多语言选项  
-触摸主界面右上角的齿轮图标进入设置界面，触摸“语言”并在弹出对话框中选择想要显示的语言即可。此界面的所有设置将会自动保存。
+触摸主界面右上角的齿轮图标进入设置界面，触摸“语言”并在弹出对话框中选择想要显示的语言即可。
+此界面的所有设置将会自动保存。
+### 支持的语言列表 
+简体中文  
+繁体中文  
+English  
+Deutsch  
+Le français  
+lingua italiana  
+日本語  
+한국어  
 
 ---------------------------------------
 ## 切换城市  
@@ -21,10 +33,10 @@
 
 ---------------------------------------
 ## 关于生活指数的语言  
-生活指数信息由和风天气API提供，该数据仅支持简体中文和繁体中文。暂时无法显示其他语言的生活指数信息。
+生活指数信息由和风天气API提供，该数据仅支持简体中文。暂时无法显示其他语言的生活指数信息。
 
 ---------------------------------------
 ## 特别鸣谢  
-感谢和风天气提供的API接口。
+感谢![和风天气](www.heweather.com)提供的API接口。
 
 ---------------------------------------
