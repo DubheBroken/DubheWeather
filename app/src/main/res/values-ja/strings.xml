@@ -47,4 +47,13 @@
 	<string name="xqw">金曜日</string>
 	<string name="xql">土曜日</string>
 	<string name="nolifestyle">すみません、ライフスタイルは予測できません。</string>
+	<string name="developer">開発者</string>
+	<string name="dubhebroken">DubheBroken</string>
+	<string name="now_vision">現在のバージョン</string>
+	<string name="bug_report">バグレポート</string>
+	<string name="data_support">データ供給</string>
+	<string name="hewheather">ヘザー</string>
+	<string name="image_support">画像サポート</string>
+	<string name="google_image">Googleの画像</string>
+	<string name="object_add">プロジェクト住所</string>
 </resources>

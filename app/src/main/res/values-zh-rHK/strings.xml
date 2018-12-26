@@ -55,4 +55,13 @@
 	<string name="xqw">星期五</string>
 	<string name="xql">星期六</string>
 	<string name="nolifestyle">抱歉，生活指數無法預報</string>
+	<string name="developer">開發者</string>
+	<string name="dubhebroken">天樞破軍</string>
+	<string name="now_vision">當前版本</string>
+	<string name="bug_report">問題反饋</string>
+	<string name="data_support">數據提供</string>
+	<string name="hewheather">和風天氣</string>
+	<string name="image_support">圖片來源</string>
+	<string name="google_image">Google圖片</string>
+	<string name="object_add">項目地址</string>
 </resources>

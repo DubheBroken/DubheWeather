@@ -47,4 +47,13 @@
 	<string name="xqw">Venerdì</string>
 	<string name="xql">Sabato</string>
 	<string name="nolifestyle">Siamo spiacenti, lo stile di vita non può essere previsto.</string>
+	<string name="developer">sviluppatore</string>
+	<string name="dubhebroken">DubheBroken</string>
+	<string name="now_vision">Versione corrente</string>
+	<string name="bug_report">Rapporto BUG</string>
+	<string name="data_support">Fornitura di dati</string>
+	<string name="hewheather">Heweather</string>
+	<string name="image_support">Supporto immagini</string>
+	<string name="google_image">Immagine di Google</string>
+	<string name="object_add">Indirizzo del progetto</string>
 </resources>

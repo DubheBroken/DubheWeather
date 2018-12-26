@@ -47,4 +47,13 @@
 	<string name="xqw">शुक्रवार</string>
 	<string name="xql">शनिवार</string>
 	<string name="nolifestyle">क्षमा करें, जीवन शैली की भविष्यवाणी नहीं की जा सकती।</string>
+	<string name="developer">डेवलपर</string>
+	<string name="dubhebroken">DubheBroken</string>
+	<string name="now_vision">वर्तमान संस्करण</string>
+	<string name="bug_report">बग रिपोर्ट</string>
+	<string name="data_support">डेटा की आपूर्ति</string>
+	<string name="hewheather">Heweather</string>
+	<string name="image_support">छवि का समर्थन</string>
+	<string name="google_image">Google छवि</string>
+	<string name="object_add">प्रोजेक्ट का पता</string>
 </resources>

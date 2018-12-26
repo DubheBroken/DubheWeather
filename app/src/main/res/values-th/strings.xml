@@ -47,4 +47,13 @@
 	<string name="xqw">วันศุกร์</string>
 	<string name="xql">วันเสาร์</string>
 	<string name="nolifestyle">ขออภัยไม่สามารถคาดเดาวิถีชีวิตได้</string>
+	<string name="developer">ผู้พัฒนา</string>
+	<string name="dubhebroken">DubheBroken</string>
+	<string name="now_vision">รุ่นปัจจุบัน</string>
+	<string name="bug_report">รายงานข้อผิดพลาด</string>
+	<string name="data_support">แหล่งข้อมูล</string>
+	<string name="hewheather">Heweather</string>
+	<string name="image_support">รองรับภาพ</string>
+	<string name="google_image">รูปภาพ Google</string>
+	<string name="object_add">ที่อยู่โครงการ</string>
 </resources>

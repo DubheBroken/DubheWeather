@@ -47,4 +47,13 @@
 	<string name="xqw">금요일</string>
 	<string name="xql">토요일</string>
 	<string name="nolifestyle">죄송합니다. 라이프 스타일을 예측할 수 없습니다.</string>
+	<string name="developer">개발자</string>
+	<string name="dubhebroken">DubheBroken</string>
+	<string name="now_vision">현재 버전</string>
+	<string name="bug_report">BUG 보고서</string>
+	<string name="data_support">데이터 공급</string>
+	<string name="hewheather">Heweather</string>
+	<string name="image_support">이미지 지원</string>
+	<string name="google_image">Google 이미지</string>
+	<string name="object_add">프로젝트 주소</string>
 </resources>

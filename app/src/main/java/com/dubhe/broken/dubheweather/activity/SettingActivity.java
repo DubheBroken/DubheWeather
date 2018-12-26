@@ -1,6 +1,7 @@
 package com.dubhe.broken.dubheweather.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -130,6 +131,7 @@ public class SettingActivity extends AppCompatActivity {
         constraintSettingUnit.setOnClickListener(v -> showSelectDialog(MODE_UNIT));
         constraintSettingLang.setOnClickListener(v -> showSelectDialog(MODE_LANG));
         constraintSettingDateStyle.setOnClickListener(v -> showSelectDialog(MODE_DATE_STYLE));
+        constraintSettingAbout.setOnClickListener(v -> startActivity(new Intent(context, AboutActivity.class)));
 
     }
 

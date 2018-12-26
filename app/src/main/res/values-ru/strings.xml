@@ -47,4 +47,13 @@
 	<string name="xqw">пятница</string>
 	<string name="xql">суббота</string>
 	<string name="nolifestyle">Извините, стиль жизни не может быть предсказан.</string>
+	<string name="developer">разработчик</string>
+	<string name="dubhebroken">DubheBroken</string>
+	<string name="now_vision">Текущая версия</string>
+	<string name="bug_report">Отчет об ошибке</string>
+	<string name="data_support">Поставка данных</string>
+	<string name="hewheather">Heweather</string>
+	<string name="image_support">Поддержка изображений</string>
+	<string name="google_image">Изображение Google</string>
+	<string name="object_add">Адрес проекта</string>
 </resources>
