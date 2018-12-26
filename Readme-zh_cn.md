@@ -1,7 +1,7 @@
 # 天枢天气  
 基于和风天气API的天气APP。支持多国语言、英式公式温度单位和世界各地城市。  
 [查看繁体中文Readme文檔](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_tw.md)  
-[View English Readme Document](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_cn.md)  
+[View English Readme Document](https://github.com/DubheBroken/DubheWeather/blob/master/README.md)  
 
 ---------------------------------------
 ## 界面预览
