@@ -1,7 +1,7 @@
 # 天樞天氣
 基於和風天氣API的天氣APP。支持多國語言、英式公式溫度單位和世界各地城市。  
-[查看简体中文Readme文档](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_tw.md)  
-[View English Readme Document](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_cn.md)  
+[查看简体中文Readme文档](https://github.com/DubheBroken/DubheWeather/blob/master/Readme-zh_cn.md)  
+[View English Readme Document](https://github.com/DubheBroken/DubheWeather/blob/master/README.md)  
 
 ---------------------------------------
 ## 界面預覽
