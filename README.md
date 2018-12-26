@@ -27,7 +27,7 @@ lingua italiana
 ## Switching cities
 Touch the city icon in the upper left corner of the main interface to enter the city selection interface for city selection. You can use any of the following methods to select a city:  
 1 directly touch the city name in the list  
-2 Enter the city name in the input box (support pinyin) and click on the search candidate.  
+2 Enter the city name in the input box (support pinyin) and touch on the search candidate.  
 3 Touch the “Current Location” button and the city will be automatically judged based on the IP address.
 
 ---------------------------------------
